@@ -1,10 +1,10 @@
 Processor Expert Version 0434
-ProjectModificationStamp=2
+ProjectModificationStamp=3
 
 [Header]
 Name=I2C_implementation
 SavedBy=Damian
-ModificationStamp=2
+ModificationStamp=3
 Date=2012-10-17
 Product=Processor Expert version 3.07 for Freescale HC(S)08/RS08/CFV1
 IDE=CW Plug-In IDE
@@ -4957,14 +4957,14 @@ EnumSymbVal=1
 ItemSymbol=clockrate
 ReadOnly=No
 UserReadOnly=No
-Value=0
+Value=36
 Base=2
 [ItemState]
 ItemSymbol=SCLfreq
-Value=1200 kHz
+Value=83.333 kHz
 [ItemState]
 ItemSymbol=SDAhold
-Value=0.292 us
+Value=2.042 us
 [ItemState]
 ItemSymbol=BrCondGrp
 ReadOnly=No
@@ -5120,7 +5120,7 @@ Value=
 ItemSymbol=pingrp0
 ReadOnly=No
 UserReadOnly=No
-Expanded=No
+Expanded=Yes
 
 [Childs]
 List=GrupItem

@@ -459,9 +459,9 @@
         <group name="Clock settings">
           <IIC_Clock_Gate v="Enabled"/>
           <Multiplier_Factor v="1"/>
-          <Clock_rate v="0"/>
-          <SCL_frequency v="1200 kHz"/>
-          <SDA_Hold v="0.292 us"/>
+          <Clock_rate v="36"/>
+          <SCL_frequency v="83.333 kHz"/>
+          <SDA_Hold v="2.042 us"/>
         </group>
         <General_call_address v="Disabled"/>
         <Address_mode v="7-bit addressing"/>

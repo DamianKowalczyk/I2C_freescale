@@ -449,4 +449,50 @@
     </CompilerProperties>
   </CPU_Bean>
 
+  <Bean name="IIC2" type="Init_IIC">
+    <Enabled v="Y"/>
+
+    <Properties>
+      <Component_name v="IIC2"/>
+      <Device v="IIC1"/>
+      <group name="Settings">
+        <group name="Clock settings">
+          <IIC_Clock_Gate v="Enabled"/>
+          <Multiplier_Factor v="1"/>
+          <Clock_rate v="0"/>
+          <SCL_frequency v="1200 kHz"/>
+          <SDA_Hold v="0.292 us"/>
+        </group>
+        <General_call_address v="Disabled"/>
+        <Address_mode v="7-bit addressing"/>
+        <Address v="0"/>
+        <Transfer_direction v="Receive"/>
+        <Transmit_Acknowledge v="yes"/>
+      </group>
+      <group name="Pins">
+        <SDA_pin v="PTC1_SDA1"/>
+        <SDA_pin_signal v=""/>
+        <SCL_pin v="PTC0_SCL1"/>
+        <SCL_pin_signal v=""/>
+      </group>
+      <group name="Interrupts">
+        <Interrupt v="Viic1"/>
+        <Interrupt_priority v="default"/>
+        <IIC_interrupt v="Disabled"/>
+        <ISR_name v=""/>
+      </group>
+      <group name="Initialization">
+        <Call_Init_method v="yes"/>
+        <Module_Enable v="no"/>
+      </group>
+    </Properties>
+
+    <Methods>
+      <Init v="generate code"/>
+    </Methods>
+
+    <Events>
+    </Events>
+  </Bean>
+
 </PE_PROJECT_SETTINGS_DOCUMENTATION>

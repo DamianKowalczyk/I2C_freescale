@@ -49,7 +49,7 @@ GenBeanModules=1
 Line=IIC2
 SignalListFile=DOC\I2C_implementation_SIGNALS.txt
 DestinationCompiler=CodeWarriorColdFireV1
-ProjectModificationStamp=2
+ProjectModificationStamp=3
 
 [2]
 Generated=Yes
@@ -149,8 +149,8 @@ GenSmartUserChangesDetected_Asembl=No
 Generated=Yes
 GenCompName=IIC2
 GenEventModule=
-HeaderAge=1095860366
-CodeAge=1095860366
+HeaderAge=1095862365
+CodeAge=1095862365
 AsemblAge=-1
 GenNumMethods=1
 Init=Yes

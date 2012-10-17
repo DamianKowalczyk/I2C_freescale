@@ -6,7 +6,7 @@
 **     Component : Init_IIC
 **     Version   : Component 01.065, Driver 01.17, CPU db: 3.00.053
 **     Compiler  : CodeWarrior ColdFireV1 C Compiler
-**     Date/Time : 2012-10-17, 16:04
+**     Date/Time : 2012-10-17, 17:02
 **     Abstract  :
 **          This file implements the IIC (IIC1) module initialization
 **          according to the Peripheral Initialization Bean settings, and defines
@@ -21,9 +21,9 @@
 **          Settings                                       : 
 **          Clock settings                                 : 
 **          Multiplier Factor                              : 1
-**          Clock rate                                     : 0
-**          SCL frequency                                  : 1200 kHz
-**          SDA Hold                                       : 0.292 us
+**          Clock rate                                     : 36
+**          SCL frequency                                  : 83.333 kHz
+**          SDA Hold                                       : 2.042 us
 **          Address                                        : 0
 **          Transfer direction                             : Receive
 **          Transmit Acknowledge                           : yes

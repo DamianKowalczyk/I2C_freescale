@@ -6,7 +6,7 @@
 **     Component : Init_IIC
 **     Version   : Component 01.065, Driver 01.17, CPU db: 3.00.053
 **     Compiler  : CodeWarrior ColdFireV1 C Compiler
-**     Date/Time : 2012-10-17, 16:04
+**     Date/Time : 2012-10-17, 17:02
 **     Abstract  :
 **          This file implements the IIC (IIC1) module initialization
 **          according to the Peripheral Initialization Bean settings, and defines
@@ -21,9 +21,9 @@
 **          Settings                                       : 
 **          Clock settings                                 : 
 **          Multiplier Factor                              : 1
-**          Clock rate                                     : 0
-**          SCL frequency                                  : 1200 kHz
-**          SDA Hold                                       : 0.292 us
+**          Clock rate                                     : 36
+**          SCL frequency                                  : 83.333 kHz
+**          SDA Hold                                       : 2.042 us
 **          Address                                        : 0
 **          Transfer direction                             : Receive
 **          Transmit Acknowledge                           : yes
@@ -72,8 +72,8 @@ void IIC2_Init(void)
   setReg8(IICC2, 0x00);                 
   /* IICA: AD7=0,AD6=0,AD5=0,AD4=0,AD3=0,AD2=0,AD1=0,??=0 */
   setReg8(IICA, 0x00);                  
-  /* IICF: MULT1=0,MULT0=0,ICR5=0,ICR4=0,ICR3=0,ICR2=0,ICR1=0,ICR0=0 */
-  setReg8(IICF, 0x00);                  
+  /* IICF: MULT1=0,MULT0=0,ICR5=1,ICR4=0,ICR3=0,ICR2=1,ICR1=0,ICR0=0 */
+  setReg8(IICF, 0x24);                  
   /* IICS: TCF=1,IAAS=0,BUSY=0,ARBL=1,??=0,SRW=0,IICIF=1,RXAK=0 */
   setReg8(IICS, 0x92);                 /* Clear the interrupt flags */ 
   /* IICC1: IICEN=0,IICIE=0,MST=0,TX=0,TXAK=0,RSTA=0,??=0,??=0 */
