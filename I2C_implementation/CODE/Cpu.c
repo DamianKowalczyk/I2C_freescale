@@ -7,7 +7,7 @@
 **     Version   : Component 01.005, Driver 01.08, CPU db: 3.00.053
 **     Datasheet : MCF51AC256RM Rev. 4, 5/2009
 **     Compiler  : CodeWarrior ColdFireV1 C Compiler
-**     Date/Time : 2012-10-17, 16:00
+**     Date/Time : 2012-10-17, 16:04
 **     Abstract  :
 **         This bean "MCF51AC256A_80" contains initialization of the
 **         CPU and provides basic methods and events for CPU core
@@ -25,6 +25,7 @@
 ** ###################################################################*/
 
 /* MODULE Cpu. */
+#include "IIC2.h"
 #include "PE_Types.h"
 #include "PE_Error.h"
 #include "PE_Const.h"
@@ -200,6 +201,8 @@ void PE_low_level_init(void)
   /* PTJDS: PTJDS7=1,PTJDS6=1,PTJDS5=1,PTJDS4=1,PTJDS3=1,PTJDS2=1,PTJDS1=1,PTJDS0=1 */
   setReg8(PTJDS, 0xFF);                 
   /* ### Shared modules init code ... */
+  /* ### Init_IIC "IIC2" init code ... */
+  IIC2_Init();
   /* INTC_WCR: ENB=1,??=0,??=0,??=0,??=0,MASK=0 */
   setReg8(INTC_WCR, 0x80);              
   /* Set initial interrupt priority 0 */

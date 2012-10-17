@@ -29,13 +29,14 @@
   000006CE 00000090 .text   _startup	(startcf.c)
   0000075E 00000002 .text   Cpu_Interrupt	(Cpu.c)
   00000760 000000A2 .text   __initialize_hardware	(Cpu.c)
-  00000802 0000009C .text   PE_low_level_init	(Cpu.c)
-  0000089E 0000000A .text   main	(I2C_implementation.c)
-  000008A8 0000001C .text   __call_static_initializers	(librt.a cf_staticinitia)
-  000008C4 0000002C .text   __destroy_global_chain	(librt.a cf_staticinitia)
-  000008F0 0000000C .text   _ewl_exit	(librt.a abort_exit.o   )
-#>000008FC          ___ROM_AT (linker command file)
-#>000008FC          ___DATA_ROM (linker command file)
+  00000802 000000A0 .text   PE_low_level_init	(Cpu.c)
+  000008A2 0000000A .text   main	(I2C_implementation.c)
+  000008AC 00000020 .text   IIC2_Init	(IIC2.c)
+  000008CC 0000001C .text   __call_static_initializers	(librt.a cf_staticinitia)
+  000008E8 0000002C .text   __destroy_global_chain	(librt.a cf_staticinitia)
+  00000914 0000000C .text   _ewl_exit	(librt.a abort_exit.o   )
+#>00000920          ___ROM_AT (linker command file)
+#>00000920          ___DATA_ROM (linker command file)
 
 # .data
 #>00800000          ___DATA_RAM (linker command file)
@@ -72,10 +73,10 @@
 #>00000010          ___stack_safety (linker command file)
 #>00800808          __SP_INIT (linker command file)
 #>00800808          ___SP_AFTER_RESET (linker command file)
-#>00000900          _romp_at (linker command file)
+#>00000924          _romp_at (linker command file)
 
 # .romp
-#>00000900          __S_romp (linker command file)
+#>00000924          __S_romp (linker command file)
 
 
 # Memory map:
@@ -84,12 +85,12 @@
   0000040D 0000040D 00000001 .abs_NVPROT_INIT abs_NVPROT_INIT
   0000040F 0000040F 00000001 .abs_NVOPT_INIT abs_NVOPT_INIT
   00000410 00000410 00000000 .code      code
-  00000410 00000410 000004EC .text      code
+  00000410 00000410 00000510 .text      code
   00800000 00800000 00000000 .userram   userram
-  00800000 000008FC 00000004 .data      userram
+  00800000 00000920 00000004 .data      userram
   00800004 00800004 00000004 .bss       userram
   00800008 00800008 00000000 .custom    userram
-  00800008 00000900 00000018 .romp      userram
+  00800008 00000924 00000018 .romp      userram
 
-# Link start time: Wed Oct 17 16:01:04 2012
-# Link end time: Wed Oct 17 16:01:05 2012
+# Link start time: Wed Oct 17 16:04:31 2012
+# Link end time: Wed Oct 17 16:04:31 2012
