@@ -1,11 +1,11 @@
 Processor Expert Version 0434
-ProjectModificationStamp=3
+ProjectModificationStamp=10
 
 [Header]
 Name=I2C_implementation
 SavedBy=Damian
-ModificationStamp=3
-Date=2012-10-17
+ModificationStamp=10
+Date=2012-10-20
 Product=Processor Expert version 3.07 for Freescale HC(S)08/RS08/CFV1
 IDE=CW Plug-In IDE
 PEversion=4.34.0.5219
@@ -18,7 +18,7 @@ DocumentationDir=DOC\
 CompiledFilesSubDir=
 TemporaryDir=%TEMP%
 OverwriteEvents=3
-GenerateISRs=No
+GenerateISRs=Yes
 DeleteUnusedEvents=Yes
 OverwriteBeanDrv=0
 ReviewCodeGenChanges=No
@@ -4844,11 +4844,13 @@ Value0=Yes
 Count=0
 
 [BoolList_ProgConfig]
-Count=2
+Count=3
 ItemId0=1
 Value0=Yes
 ItemId1=2
 Value1=Yes
+ItemId2=10
+Value2=Yes
 List=Property
 [ItemState]
 ItemSymbol=Optimizations
@@ -4934,7 +4936,7 @@ List=GrupItem
 ItemSymbol=clkgrp
 ReadOnly=No
 UserReadOnly=No
-Expanded=Yes
+Expanded=No
 
 [Childs]
 List=GrupItem
@@ -5013,8 +5015,8 @@ Base=2
 ItemSymbol=IICtramod
 ReadOnly=No
 UserReadOnly=No
-Index=0
-EnumSymbVal=Receive
+Index=1
+EnumSymbVal=Transmit
 [ItemState]
 ItemSymbol=IICtraack
 ReadOnly=No
@@ -5199,8 +5201,8 @@ Value=default
 ItemSymbol=IICintena
 ReadOnly=No
 UserReadOnly=No
-Index=1
-Value=No
+Index=0
+Value=Yes
 [ItemState]
 ItemSymbol=SDALowCondGrp
 ReadOnly=No
@@ -5227,7 +5229,7 @@ List=GrupItem
 ItemSymbol=IICisrnam
 ReadOnly=No
 UserReadOnly=No
-Value=
+Value=I2C_interrupt_handler
 
 [EndOfChilds]
 
@@ -5259,13 +5261,13 @@ Value=Yes
 ItemSymbol=IICena
 ReadOnly=No
 UserReadOnly=No
-Index=1
-Value=No
+Index=0
+Value=Yes
 [ItemState]
 ItemSymbol=Internal
 ReadOnly=No
 UserReadOnly=No
-Expanded=Yes
+Expanded=No
 
 [Childs]
 List=GrupItem
@@ -5298,6 +5300,23 @@ ProgType=event
 ProgNumb=2
 List=Property
 EventModule=Events
+
+[Program]
+ProgType=user
+ProgNumb=10
+List=Property
+[ItemState]
+ItemSymbol=ProgName
+ReadOnly=No
+Value=I2C_functions
+[ItemState]
+ItemSymbol=ProgDir
+ReadOnly=No
+Value=CODE\
+ProgEnabled=Yes
+NeedGeneration=No
+GenUserModule=No
+ExtProgramType=Code
 
 [Documentation]
 CompNumb=3

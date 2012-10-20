@@ -5,7 +5,7 @@
 **     Processor : MCF51AC256ACLK
 **     Version   : Component 01.005, Driver 01.08, CPU db: 3.00.053
 **     Compiler  : CodeWarrior ColdFireV1 C Compiler
-**     Date/Time : 2012-10-17, 16:04
+**     Date/Time : 2012-10-20, 19:24
 **     Abstract  :
 **         This bean "MCF51AC256A_80" contains initialization of the
 **         CPU and provides basic methods and events for CPU core
@@ -119,7 +119,7 @@ const tIsrFunc _InterruptVectorTable[120] @0x00000000 = { /* Interrupt vector ta
   Cpu_Interrupt,                       /* 0x57  0x0000015C   -   -   ivVsci2tx      unused by PE */
   Cpu_Interrupt,                       /* 0x58  0x00000160   -   -   ivVkeyboard    unused by PE */
   Cpu_Interrupt,                       /* 0x59  0x00000164   -   -   ivVadc1        unused by PE */
-  Cpu_Interrupt,                       /* 0x5A  0x00000168   2   2   ivViic1        unused by PE */
+  I2C_interrupt_handler,               /* 0x5A  0x00000168   2   2   ivViic1        used by PE */
   Cpu_Interrupt,                       /* 0x5B  0x0000016C   -   -   ivVrti         unused by PE */
   Cpu_Interrupt,                       /* 0x5C  0x00000170   -   -   ivVtpm3ch0     unused by PE */
   Cpu_Interrupt,                       /* 0x5D  0x00000174   -   -   ivVtpm3ch1     unused by PE */

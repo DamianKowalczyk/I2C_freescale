@@ -6,7 +6,7 @@
 **     Component : Init_IIC
 **     Version   : Component 01.065, Driver 01.17, CPU db: 3.00.053
 **     Compiler  : CodeWarrior ColdFireV1 C Compiler
-**     Date/Time : 2012-10-17, 17:02
+**     Date/Time : 2012-10-20, 20:57
 **     Abstract  :
 **          This file implements the IIC (IIC1) module initialization
 **          according to the Peripheral Initialization Bean settings, and defines
@@ -25,7 +25,7 @@
 **          SCL frequency                                  : 83.333 kHz
 **          SDA Hold                                       : 2.042 us
 **          Address                                        : 0
-**          Transfer direction                             : Receive
+**          Transfer direction                             : Transmit
 **          Transmit Acknowledge                           : yes
 **          Pins                                           : 
 **          SDA pin                                        : PTC1_SDA1
@@ -34,11 +34,11 @@
 **          SCL pin signal                                 : 
 **          Interrupts                                     : 
 **          Interrupt                                      : Viic1
-**          IIC interrupt                                  : Disabled
-**          ISR name                                       : 
+**          IIC interrupt                                  : Enabled
+**          ISR name                                       : I2C_interrupt_handler
 **          Initialization                                 : 
 **          Call Init method                               : yes
-**          Module Enable                                  : no
+**          Module Enable                                  : yes
 **     Contents  :
 **         Init - void IIC2_Init(void);
 **
@@ -51,6 +51,32 @@
 /* MODULE IIC2. */
 
 #include "IIC2.h"
+
+/*
+** ###################################################################
+**
+**  The interrupt service routine(s) must be implemented
+**  by user in one of the following user modules.
+**
+**  If the "Generate ISR" option is enabled, Processor Expert generates
+**  ISR templates in the CPU event module.
+**
+**  User modules:
+**      I2C_implementation.c
+**      Events.c
+**      I2C_functions.c
+**
+** ###################################################################
+ISR(I2C_interrupt_handler)
+{
+  // NOTE: The routine should include the following actions to obtain
+  //       correct functionality of the hardware.
+  //
+  //  IICIF bit in the IICS register must be set to clear
+  //  interrupt request flag.
+  //  Example: IICS = IICS_IICIF_MASK;
+}
+*/
 
 /*
 ** ===================================================================
@@ -76,8 +102,10 @@ void IIC2_Init(void)
   setReg8(IICF, 0x24);                  
   /* IICS: TCF=1,IAAS=0,BUSY=0,ARBL=1,??=0,SRW=0,IICIF=1,RXAK=0 */
   setReg8(IICS, 0x92);                 /* Clear the interrupt flags */ 
-  /* IICC1: IICEN=0,IICIE=0,MST=0,TX=0,TXAK=0,RSTA=0,??=0,??=0 */
-  setReg8(IICC1, 0x00);                 
+  /* IICC1: IICEN=1 */
+  setReg8Bits(IICC1, 0x80);             
+  /* IICC1: IICEN=1,IICIE=1,MST=0,TX=1,TXAK=0,RSTA=0,??=0,??=0 */
+  setReg8(IICC1, 0xD0);                 
 }
 
 /* END IIC2. */

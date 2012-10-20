@@ -21,6 +21,29 @@
 
 /* User includes (#include below this line is not maintained by Processor Expert) */
 
+#ifdef ISR_IN_NONBANKED
+#pragma CODE_SEG __NEAR_SEG NON_BANKED
+#endif
+/*
+** ===================================================================
+**     Interrupt handler : I2C_interrupt_handler
+**
+**     Description :
+**         User interrupt service routine. 
+**     Parameters  : None
+**     Returns     : Nothing
+** ===================================================================
+*/
+ISR(I2C_interrupt_handler)
+{
+  /* Write your interrupt code here ... */
+
+}
+#ifdef ISR_IN_NONBANKED
+#pragma CODE_SEG DEFAULT
+#endif
+
+
 /* END Events */
 
 /*

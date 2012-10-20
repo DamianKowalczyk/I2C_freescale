@@ -6,7 +6,7 @@
 **     Component : Init_IIC
 **     Version   : Component 01.065, Driver 01.17, CPU db: 3.00.053
 **     Compiler  : CodeWarrior ColdFireV1 C Compiler
-**     Date/Time : 2012-10-17, 17:02
+**     Date/Time : 2012-10-20, 19:24
 **     Abstract  :
 **          This file implements the IIC (IIC1) module initialization
 **          according to the Peripheral Initialization Bean settings, and defines
@@ -25,7 +25,7 @@
 **          SCL frequency                                  : 83.333 kHz
 **          SDA Hold                                       : 2.042 us
 **          Address                                        : 0
-**          Transfer direction                             : Receive
+**          Transfer direction                             : Transmit
 **          Transmit Acknowledge                           : yes
 **          Pins                                           : 
 **          SDA pin                                        : PTC1_SDA1
@@ -34,11 +34,11 @@
 **          SCL pin signal                                 : 
 **          Interrupts                                     : 
 **          Interrupt                                      : Viic1
-**          IIC interrupt                                  : Disabled
-**          ISR name                                       : 
+**          IIC interrupt                                  : Enabled
+**          ISR name                                       : I2C_interrupt_handler
 **          Initialization                                 : 
 **          Call Init method                               : yes
-**          Module Enable                                  : no
+**          Module Enable                                  : yes
 **     Contents  :
 **         Init - void IIC2_Init(void);
 **
@@ -61,6 +61,14 @@
 /* Include inherited beans */
 
 #include "Cpu.h"
+
+/*
+** ===================================================================
+** The interrupt service routine must be implemented by user in one
+** of the user modules (see IIC2.c file for more information).
+** ===================================================================
+*/
+__interrupt void I2C_interrupt_handler(void);
 
 void IIC2_Init(void);
 /*
