@@ -17,13 +17,11 @@ int sendSampleDataToExpander(char number)
 {
 
   int delay = 65536;
-  
-  //setRegBit(IICS, IICIF);  // clear interrupt flag   
+      
   clearInteruptFlag();
     
   sendStartSignal();     
-  
-  //setReg(IICD, 0b01111110); // address of expander + WR bit
+    
   sendByteOfData(0b01111110);
   
   while(getRegBit(IICS, IICIF) == 0 && delay != 0)  // wait for copletly sent byte
@@ -32,7 +30,6 @@ int sendSampleDataToExpander(char number)
   if (delay==0)  // if the byte was not correct send
     return 7;
   
-  //setRegBit(IICS, IICIF);  // clear interrupt flag
   clearInteruptFlag();
     
   delay = 65535;  
@@ -42,8 +39,7 @@ int sendSampleDataToExpander(char number)
     
   if (delay==0)  // end if no ack get
     return 5;
-  
-  //setReg(IICD, number); // write sequence to sent
+    
   sendByteOfData(number);
    
   delay = 65535;
@@ -53,8 +49,7 @@ int sendSampleDataToExpander(char number)
     
   if (delay==0)  // if the byte was not correct send
     return 8;
-  
-  //setRegBit(IICS, IICIF);  // clear interrupt flag  
+    
   clearInteruptFlag();
   
   delay = 65535;
@@ -63,8 +58,7 @@ int sendSampleDataToExpander(char number)
     
   if (delay==0)
     return 6;
-  
-  //clrRegBit(IICC1, MST); // stop signal - probably  
+    
   sendStopSignal();
   
   return 1;
