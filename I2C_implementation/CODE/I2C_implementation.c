@@ -38,6 +38,8 @@ void main(void)
   char table[] = {0,0,0,0,0,0,0,0,0,0};
   byte i = 0;
   int j;
+  char dataFromExpander[] = {0,0,0,0,0,0,0,0,0,0};
+  char* data_pointer = dataFromExpander;
   
   /* Write your local variable definition here */
 
@@ -48,7 +50,7 @@ void main(void)
   /* Write your code here */
   /* For example: for(;;) { } */
   
-  for (j=0;j<10;j++){
+  /*for (j=0;j<10;j++){
     
     table[i] = sendSampleDataToExpander(data);
     i++;
@@ -60,6 +62,16 @@ void main(void)
     for (a=0; a<200; a++)
       for (b=0; b<24000; b++)
         ;      
+  }
+  */
+  
+  for (j=0;j<10;j++){
+    
+    table[j] = getSampleDataFromExpander(data_pointer);
+    data_pointer++;
+    for (a=0; a<200; a++)
+      for (b=0; b<24000; b++)
+        ;    
   }
   
 

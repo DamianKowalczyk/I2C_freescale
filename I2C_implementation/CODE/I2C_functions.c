@@ -55,21 +55,4 @@ void receiveByte_Ack(char* data){
 void receiveByte_No_Ack(char* data){
 }
 
-
-
-
-
-// generate stop signal
-// I2C Enable
-// set I2C to Transfer mode
-// set I2C to Receive mode
-
-
-
-
-
-
-
-
-
 /* END I2C_functions */

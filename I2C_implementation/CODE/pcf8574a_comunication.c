@@ -66,4 +66,52 @@ int sendSampleDataToExpander(char number)
 } 
 
 
+byte getSampleDataFromExpander(char* data){
+  
+  int delay = 65536;
+        
+  clearInteruptFlag();
+    
+  sendStartSignal();     
+    
+  sendByteOfData(0b01111111); // inform expander that i will get some data from him
+  
+  while(getRegBit(IICS, IICIF) == 0 && delay != 0)  // wait for copletly sent byte
+    delay--;
+    
+  if (delay==0)  // if the byte was not correct send
+    return 7;
+  
+  clearInteruptFlag();
+    
+  delay = 65535;  
+  
+  while(getRegBit(IICS, RXAK) && delay != 0)  // wait for ack
+    delay--;
+    
+  if (delay==0)  // end if no ack get
+    return 5;
+  
+  clrRegBit(IICC1, TX); // receive information from device 
+  
+  // no ack will be send after receiving sample of data
+  setRegBit(IICC1, TXAK);  // No acknowledge signal response is sent
+  
+  *data = getReg(IICD);
+  
+  while(getRegBit(IICS, IICIF) == 0 && delay != 0)  // wait for copletly sent byte
+    delay--;
+    
+  if (delay==0)  // if the byte was not correct send
+    return 7;
+  
+  clearInteruptFlag();
+  
+  sendStopSignal();
+  
+  return 1;
+  
+}
+
+
 /* END pcf8574a_comunication */
