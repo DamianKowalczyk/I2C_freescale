@@ -35,17 +35,16 @@ void sendStopSignal(){
   clrRegBit(IICC1, MST); // stop signal: mst 1->0
 }
 
-void sendByte(char* data){
-
-  //setRegBit(IICS, IICIF); // clear IICIF
-
-  //setRegBit(IICC1, MST); // master mode
-  
-  //setReg(IICD, *data);
-  
-  //check if transmision was complete
-    
+void clearInteruptFlag(){
+   
+  setRegBit(IICS, IICIF);  // clear interrupt flag
 }
+
+void sendByteOfData(char data){
+
+  setReg(IICD, data); // write sequence to sent  
+}
+
 
 void send_sequence_of_bytes(char* long_data){
 }
@@ -57,61 +56,6 @@ void receiveByte_No_Ack(char* data){
 }
 
 
-int sendSampleDataToExpander(char number) 
-{
-
-  int delay = 65536;
-  
-  setRegBit(IICS, IICIF);  // clear interrupt flag   
-  
-  //setRegBit(IICC1, MST); // start signal - probably
-  sendStartSignal();     
-  
-  setReg(IICD, 0b01111110); // address of expander + WR bit
-  
-  while(getRegBit(IICS, IICIF) == 0 && delay != 0)  // wait for copletly sent byte
-    delay--;
-    
-  if (delay==0)  // if the byte was not correct send
-    return 7;
-  
-  setRegBit(IICS, IICIF);  // clear interrupt flag
-    
-  delay = 65535;  
-  
-  while(getRegBit(IICS, RXAK) && delay != 0)  // wait for ack
-    delay--;
-    
-  if (delay==0)  // end if no ack get
-    return 5;
-  
-  setReg(IICD, number); // write sequence to sent
-  
-  delay = 65535;
-  
-  while(getRegBit(IICS, IICIF) == 0 && delay != 0)  // wait for copletly sent byte
-    delay--;
-    
-  if (delay==0)  // if the byte was not correct send
-    return 8;
-  
-  setRegBit(IICS, IICIF);  // clear interrupt flag  
-  
-  delay = 65535;
-  while(getRegBit(IICS, RXAK) && delay != 0)
-    delay--;
-    
-  if (delay==0)
-    return 6;
-  
-  //clrRegBit(IICC1, MST); // stop signal - probably  
-  sendStopSignal();
-  
-  return 1;
-  
-  
-    
-}
 
 
 

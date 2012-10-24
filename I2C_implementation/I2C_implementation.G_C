@@ -44,13 +44,14 @@ Line=IO_Map
 Line=PE_Const
 Line=PE_Error
 Line=PE_Types
-GenExternModules=1
+GenExternModules=2
+Line=pcf8574a_comunication
 Line=I2C_functions
 GenBeanModules=1
 Line=IIC2
 SignalListFile=DOC\I2C_implementation_SIGNALS.txt
 DestinationCompiler=CodeWarriorColdFireV1
-ProjectModificationStamp=12
+ProjectModificationStamp=13
 
 [2]
 Generated=Yes
@@ -151,7 +152,7 @@ Generated=Yes
 GenCompName=IIC2
 GenEventModule=
 HeaderAge=1096063746
-CodeAge=1096066859
+CodeAge=1096323540
 AsemblAge=-1
 GenNumMethods=1
 Init=Yes
@@ -169,8 +170,8 @@ LineEnd=87
 MethodPos1=Init
 MethodType=method
 ModuleType=Code
-LineBeg=80
-LineEnd=109
+LineBeg=81
+LineEnd=110
 
 [UsedSrcFiles]
 SrcFile=Drivers\SW\_PE_ProjectInfo.drv=993102025
