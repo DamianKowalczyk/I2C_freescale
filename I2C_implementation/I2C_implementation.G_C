@@ -50,7 +50,7 @@ GenBeanModules=1
 Line=IIC2
 SignalListFile=DOC\I2C_implementation_SIGNALS.txt
 DestinationCompiler=CodeWarriorColdFireV1
-ProjectModificationStamp=10
+ProjectModificationStamp=12
 
 [2]
 Generated=Yes

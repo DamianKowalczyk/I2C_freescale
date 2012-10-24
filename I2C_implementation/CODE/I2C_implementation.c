@@ -26,10 +26,14 @@
 #include "PE_Const.h"
 #include "IO_Map.h"
 
+
 /* User includes (#include below this line is not maintained by Processor Expert) */
 
 void main(void)
 {
+
+  int result = 0;
+  
   /* Write your local variable definition here */
 
   /*** Processor Expert internal initialization. DON'T REMOVE THIS CODE!!! ***/
@@ -38,6 +42,8 @@ void main(void)
 
   /* Write your code here */
   /* For example: for(;;) { } */
+  
+  result = sendSampleDataToExpander();
 
   /*** Don't write any code pass this line, or it will be deleted during code generation. ***/
   /*** Processor Expert end of main routine. DON'T MODIFY THIS CODE!!! ***/
