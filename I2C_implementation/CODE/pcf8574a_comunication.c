@@ -19,6 +19,11 @@ int sendSampleDataToExpander(char number)
   int delay = 65536;
       
   clearInteruptFlag();
+  
+  // check if it is in transmit mode
+    // this fragment was changed
+  if(getRegBit(IICC1, TX)==0)
+    setRegBit(IICC1, TX);
     
   sendStartSignal();     
     
@@ -69,8 +74,13 @@ int sendSampleDataToExpander(char number)
 byte getSampleDataFromExpander(char* data){
   
   int delay = 65536;
-        
+          
   clearInteruptFlag();
+  
+   // check if it is in transmit mode
+    // this fragment was changed
+  if(getRegBit(IICC1, TX)==0)
+    setRegBit(IICC1, TX);
     
   sendStartSignal();     
     

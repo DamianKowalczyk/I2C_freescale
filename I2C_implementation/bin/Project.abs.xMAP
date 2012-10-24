@@ -37,13 +37,13 @@
   000009A6 00000024 .text   sendStopSignal	(I2C_functions.c)
   000009CA 0000000E .text   clearInteruptFlag	(I2C_functions.c)
   000009D8 0000000E .text   sendByteOfData	(I2C_functions.c)
-  000009E6 000000CC .text   getSampleDataFromExpander	(pcf8574a_comunication.c)
-  00000AB2 0000001C .text   __call_static_initializers	(librt.a cf_staticinitia)
-  00000ACE 0000002C .text   __destroy_global_chain	(librt.a cf_staticinitia)
-  00000AFA 0000000C .text   _ewl_exit	(librt.a abort_exit.o   )
-  00000B06 00000018 .text   __clear	(librt.a cpluslib.o     )
-#>00000B20          ___ROM_AT (linker command file)
-#>00000B20          ___DATA_ROM (linker command file)
+  000009E6 000000E2 .text   getSampleDataFromExpander	(pcf8574a_comunication.c)
+  00000AC8 0000001C .text   __call_static_initializers	(librt.a cf_staticinitia)
+  00000AE4 0000002C .text   __destroy_global_chain	(librt.a cf_staticinitia)
+  00000B10 0000000C .text   _ewl_exit	(librt.a abort_exit.o   )
+  00000B1C 00000018 .text   __clear	(librt.a cpluslib.o     )
+#>00000B34          ___ROM_AT (linker command file)
+#>00000B34          ___DATA_ROM (linker command file)
 
 # .data
 #>00800000          ___DATA_RAM (linker command file)
@@ -80,10 +80,10 @@
 #>00000010          ___stack_safety (linker command file)
 #>00800814          __SP_INIT (linker command file)
 #>00800814          ___SP_AFTER_RESET (linker command file)
-#>00000B30          _romp_at (linker command file)
+#>00000B44          _romp_at (linker command file)
 
 # .romp
-#>00000B30          __S_romp (linker command file)
+#>00000B44          __S_romp (linker command file)
 
 
 # Memory map:
@@ -92,12 +92,12 @@
   0000040D 0000040D 00000001 .abs_NVPROT_INIT abs_NVPROT_INIT
   0000040F 0000040F 00000001 .abs_NVOPT_INIT abs_NVOPT_INIT
   00000410 00000410 00000000 .code      code
-  00000410 00000410 00000710 .text      code
+  00000410 00000410 00000724 .text      code
   00800000 00800000 00000000 .userram   userram
-  00800000 00000B20 00000010 .data      userram
+  00800000 00000B34 00000010 .data      userram
   00800010 00800010 00000004 .bss       userram
   00800014 00800014 00000000 .custom    userram
-  00800014 00000B30 00000018 .romp      userram
+  00800014 00000B44 00000018 .romp      userram
 
-# Link start time: Wed Oct 24 21:54:18 2012
-# Link end time: Wed Oct 24 21:54:19 2012
+# Link start time: Wed Oct 24 23:06:17 2012
+# Link end time: Wed Oct 24 23:06:18 2012
