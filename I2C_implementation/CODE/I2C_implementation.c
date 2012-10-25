@@ -41,6 +41,9 @@ void main(void)
   char dataFromExpander[] = {0,0,0,0,0,0,0,0,0,0};
   char* data_pointer = dataFromExpander;
   
+  int dataFromTerm[] = {0,0,0,0,0,0,0,0,0,0};
+  int* data_p = dataFromTerm;
+  
   /* Write your local variable definition here */
 
   /*** Processor Expert internal initialization. DON'T REMOVE THIS CODE!!! ***/
@@ -49,6 +52,8 @@ void main(void)
 
   /* Write your code here */
   /* For example: for(;;) { } */
+  
+  /*
   
   for (j=0;j<10;j++){
     
@@ -64,6 +69,8 @@ void main(void)
         ;      
   }
   
+  */
+  
   
   /*
   
@@ -76,6 +83,15 @@ void main(void)
         ;    
   }
   */
+  
+  for (j=0;j<10;j++){
+    
+    table[j] = getTemperature(data_p);
+    data_p++;
+    for (a=0; a<200; a++)
+      for (b=0; b<24000; b++)
+        ;    
+  }
 
   /*** Don't write any code pass this line, or it will be deleted during code generation. ***/
   /*** Processor Expert end of main routine. DON'T MODIFY THIS CODE!!! ***/

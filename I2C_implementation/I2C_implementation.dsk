@@ -40,7 +40,7 @@ BF_BA_AllQuestions=Yes
 
 [ObjInspector]
 Status=Visible
-WindowState=MAXIMAL
+WindowState=NORMAL
 Rect=[11|97|946|533]
 ObjInspectorDockedWithPrphInit=No
 ColWidth01=334
@@ -91,7 +91,7 @@ FindScope=FROM_CURSOR
 FindHistory=0
 ReplaceHistory=0
 OpenFilesCount=0
-SelFile=
+SelFile=E:\disseration\project\I2C\I2C_implementation\CODE\I2C_implementation.c
 SelLine=-1
 FileHistory=0
 

@@ -18,7 +18,7 @@
   // address of FM75 is 1001111
 /* The same initial settings of bus speed as in expander should work also for this device */
 
-int getTemperature(){
+int getTemperature(int* temp_pointer){
 
   int temperature = 0;
   int delay = 65536;
@@ -69,6 +69,8 @@ int getTemperature(){
   setRegBit(IICC1, TXAK);  // No acknowledge signal response is sent
   
   temperature |= getReg(IICD);
+  
+  *temp_pointer = temperature;
   
   while(getRegBit(IICS, IICIF) == 0 && delay != 0)  // wait for copletly sent byte
     delay--;
