@@ -9,24 +9,9 @@ StartupPrj=E:\disseration\project\I2C\I2C_implementation\I2C_implementation.pe
 [CpuExpert]
 
 [AppPanel]
-Status=Visible
+Status=hiden
 WindowState=NORMAL
-Rect=[0|153|347|494]
-AllFocusedNode=IIC2:Init_IIC
-ConfigurationsInAllExpanded=Yes
-CPUsInAllExpanded=Yes
-FPGAsInAllExpanded=No
-OperatingSystemInAllExpanded=Yes
-BeansInAllExpanded=Yes
-TasksInAllExpanded=No
-ProgramsInAllExpanded=Yes
-Gen_ProgramsInAllExpanded=No
-Gen_BeanModulesInAllExpanded=No
-ExternModulesInAllExpanded=No
-DocumentationInAllExpanded=No
-PESLInAllExpanded=No
-PESL_moduleInAllExpanded=No
-ViewEnabledItemsOnly=No
+Rect=[-4|58|318|530]
 
 [CpuPanel]
 Status=hiden
@@ -58,8 +43,8 @@ Status=Visible
 WindowState=MAXIMAL
 Rect=[11|97|946|533]
 ObjInspectorDockedWithPrphInit=No
-ColWidth01=312
-ColWidth02=624
+ColWidth01=334
+ColWidth02=668
 ColWidth11=248
 ColWidth12=464
 ColWidth21=248
@@ -106,7 +91,7 @@ FindScope=FROM_CURSOR
 FindHistory=0
 ReplaceHistory=0
 OpenFilesCount=0
-SelFile=E:\disseration\project\I2C\I2C_implementation\CODE\I2C_implementation.c
+SelFile=
 SelLine=-1
 FileHistory=0
 

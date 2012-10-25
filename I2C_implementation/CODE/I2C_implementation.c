@@ -50,7 +50,7 @@ void main(void)
   /* Write your code here */
   /* For example: for(;;) { } */
   
-  /*for (j=0;j<10;j++){
+  for (j=0;j<10;j++){
     
     table[i] = sendSampleDataToExpander(data);
     i++;
@@ -63,7 +63,9 @@ void main(void)
       for (b=0; b<24000; b++)
         ;      
   }
-  */
+  
+  
+  /*
   
   for (j=0;j<10;j++){
     
@@ -73,7 +75,7 @@ void main(void)
       for (b=0; b<24000; b++)
         ;    
   }
-  
+  */
 
   /*** Don't write any code pass this line, or it will be deleted during code generation. ***/
   /*** Processor Expert end of main routine. DON'T MODIFY THIS CODE!!! ***/

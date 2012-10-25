@@ -103,8 +103,7 @@ byte getSampleDataFromExpander(char* data){
     return 5;
   
   clrRegBit(IICC1, TX); // receive information from device 
-  
-  // no ack will be send after receiving sample of data
+    
   setRegBit(IICC1, TXAK);  // No acknowledge signal response is sent
   
   *data = getReg(IICD);

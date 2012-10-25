@@ -40,6 +40,16 @@ void clearInteruptFlag(){
   setRegBit(IICS, IICIF);  // clear interrupt flag
 }
 
+void setTransmitMode(){
+  if(getRegBit(IICC1, TX)==0)
+    setRegBit(IICC1, TX);
+}
+
+void setReceiveMode(){
+  if(getRegBit(IICC1, TX)==1)
+    clrRegBit(IICC1, TX); 
+}
+
 void sendByteOfData(char data){
 
   setReg(IICD, data); // write sequence to sent  

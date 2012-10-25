@@ -15,6 +15,10 @@
 // FM75 address 0b
 /* MODULE FM75_comunication */
 
+  // address of FM75 is 1001111
+/* The same initial settings of bus speed as in expander should work also for this device */
+
+  
 
 
 
