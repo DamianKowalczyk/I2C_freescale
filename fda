@@ -1,0 +1,71 @@
+[33mcommit fc71f555d25c7813d181c6829cad78ba3efffd35[m
+Author: Damian <damian13kowalczyk@gmail.com>
+Date:   Fri Oct 26 00:07:08 2012 +0200
+
+    added setTransmit and setReceive mode for I2C_function
+
+[33mcommit 35dd6fa61f354f6708efa6b5ea4f92073e73f663[m
+Author: Damian <damian13kowalczyk@gmail.com>
+Date:   Wed Oct 24 23:30:26 2012 +0200
+
+    probably worked receiving function for expander
+
+[33mcommit c04b629c1bc3a6fb5f529627a3d0d2db535c8993[m
+Author: Damian <damian13kowalczyk@gmail.com>
+Date:   Wed Oct 24 22:23:43 2012 +0200
+
+    created new function for receiving data - it doesnt work for this moment. Added some condition to send function to check if processor is in transfer mode. It wasnt tested yet
+
+[33mcommit 5552fc070e5bc95ababa11a7ee3b5714e37d3159[m
+Author: Damian <damian13kowalczyk@gmail.com>
+Date:   Wed Oct 24 18:23:37 2012 +0200
+
+    deleted some comments which was moved to appropriate functions
+
+[33mcommit e5ad033bbfc6a4d86d1e9c9b95f0b10770dbab54[m
+Author: Damian <damian13kowalczyk@gmail.com>
+Date:   Wed Oct 24 18:18:37 2012 +0200
+
+    create new header file for function to set data to expander and move the appropriate function to this location
+
+[33mcommit 4ae2e9f66c6e68d321523ea95f3ceb2a494d33f2[m
+Author: Damian <damian13kowalczyk@gmail.com>
+Date:   Wed Oct 24 15:46:02 2012 +0200
+
+    probably correct implementation of start and stop function and worked function to comunicate with expander
+
+[33mcommit 6420409ab21908c444a87262bc633cacb45015cf[m
+Author: Damian <damian13kowalczyk@gmail.com>
+Date:   Wed Oct 24 11:14:46 2012 +0200
+
+    this configuration and sample function to send data to expander. Added prototype function for start and stop
+
+[33mcommit d4ea3887996cc4781c7d730e67b110331cecbf30[m
+Author: Damian <damian13kowalczyk@gmail.com>
+Date:   Sat Oct 20 21:05:59 2012 +0200
+
+    enable interrupt
+
+[33mcommit 0c5796a1c33efe14224ae274a25d54e25ad4aee1[m
+Author: Damian <damian13kowalczyk@gmail.com>
+Date:   Wed Oct 17 17:29:15 2012 +0200
+
+    probably correct initial speed vales for PCF8574A
+
+[33mcommit a47491a30a3affe627ffe93e1067ffe3aa889379[m
+Author: Damian <damian13kowalczyk@gmail.com>
+Date:   Wed Oct 17 16:06:12 2012 +0200
+
+    added empty init method for I2C component using Processor Expert
+
+[33mcommit 8437297e758d63dcfbaf26e1dc000717f02e45a1[m
+Author: Damian <damian13kowalczyk@gmail.com>
+Date:   Wed Oct 17 16:02:51 2012 +0200
+
+    basic settings for CFV1 project
+
+[33mcommit 04433518e5920366601450b28be848b737038413[m
+Author: Damian <damian13kowalczyk@gmail.com>
+Date:   Wed Oct 17 13:23:28 2012 +0200
+
+    initial commit with README file
