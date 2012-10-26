@@ -13,7 +13,7 @@
 
 /* MODULE pcf8574a_comunication */
 
-int sendSampleDataToExpander_New(char number) 
+int sendSampleDataToExpander(char number) 
 {
   byte result = 15;
       
@@ -29,11 +29,9 @@ int sendSampleDataToExpander_New(char number)
     
   I2C_SendStop();
   
-  return result;
+  return 0;
     
 } 
-
-
 
 byte getSampleDataFromExpander(char* data){
   

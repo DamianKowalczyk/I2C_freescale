@@ -56,7 +56,7 @@ byte I2C_SendByte_Ack(char data){
   if (delay==0)  
     return TRANSMISSION_FAILD;
   
-  clearInteruptFlag();
+  //clearInteruptFlag();
     
   delay = 65535;  
   
@@ -84,20 +84,64 @@ byte I2C_SendByte_No_Ack(char data){
   if (delay==0)  
     return TRANSMISSION_FAILD;
   
-  clearInteruptFlag();
+  //clearInteruptFlag();
   
   return OK;  
 }
 
+byte I2C_ReceiveByte_Ack(char* data){
+  int delay = 65535;
 
-void send_sequence_of_bytes(char* long_data){
+  clearInteruptFlag();
+  
+  setReceiveMode();  
+  
+  clrRegBit(IICC1, TXAK); // send ack after succesfull receiving byte of data
+  getReg(IICD);    
+  
+  while(getRegBit(IICS, IICIF) == 0 && delay != 0)  // wait for copletly sent byte
+    delay--;
+    
+  if (delay==0)  // if the byte was not correct sent
+    return TRANSMISSION_FAILD;
+  
+  
+  clrRegBit(IICC1, IICEN);  // disable I2C   
+  
+  *data = getReg(IICD); 
+  
+  setRegBit(IICC1, IICEN);  // enable I2C
+  
+  return OK;
+  
 }
 
-void I2C_ReceiveByte_Ack(char* data){
+byte I2C_ReceiveByte_No_Ack(char* data){
+  int delay = 65535;
+
+  clearInteruptFlag();
+  
+  setReceiveMode();  
+  
+  setRegBit(IICC1, TXAK);  // No acknowledge signal response is sent
+  getReg(IICD);    
+  
+  while(getRegBit(IICS, IICIF) == 0 && delay != 0)  // wait for copletly sent byte
+    delay--;
+    
+  if (delay==0)  // if the byte was not correct sent
+    return TRANSMISSION_FAILD;
+  
+  
+  clrRegBit(IICC1, IICEN);  // disable I2C   
+  
+  *data = getReg(IICD); 
+  
+  setRegBit(IICC1, IICEN);  // enable I2C
+  
+  return OK; 
 }
 
-void I2C_ReceiveByte_No_Ack(char* data){
-}
 
 
 
