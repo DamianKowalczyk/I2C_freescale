@@ -41,12 +41,12 @@ void clearInteruptFlag(){
 }
 
 void setTransmitMode(){
-  if(getRegBit(IICC1, TX)==0)
+  //if(getRegBit(IICC1, TX)==0)
     setRegBit(IICC1, TX);
 }
 
 void setReceiveMode(){
-  if(getRegBit(IICC1, TX)==1)
+  //if(getRegBit(IICC1, TX)==1)
     clrRegBit(IICC1, TX); 
 }
 

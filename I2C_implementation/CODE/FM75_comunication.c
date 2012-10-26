@@ -21,10 +21,12 @@
 int getTemperature(int* temp_pointer){
 
   int temperature = 0;
+  int tmp= 0;
+  int tmp2 = 0;
   int delay = 65536;
   
           
-  clearInteruptFlag();
+  //clearInteruptFlag();
   
   setTransmitMode();
     
@@ -38,37 +40,37 @@ int getTemperature(int* temp_pointer){
     delay--;
     
   if (delay==0)  // if the byte was not correct send
-    return 7;
-  
-  clearInteruptFlag();
-    
+    return 7;    
+      
   delay = 65535;  
-  
   while(getRegBit(IICS, RXAK) && delay != 0)  // wait for ack
     delay--;
     
   if (delay==0)  // end if no ack get
     return 5;
   
+  clearInteruptFlag();
+  
   setReceiveMode();  
   
   clrRegBit(IICC1, TXAK); // send ack after receiving first byte of data
-  
-  temperature = getReg(IICD)<<8; 
+  tmp = getReg(IICD);
+  temperature = tmp <<8; 
    
   
-  
+  delay = 65535;
   while(getRegBit(IICS, IICIF) == 0 && delay != 0)  // wait for copletly sent byte
     delay--;
     
-  if (delay==0)  // if the byte was not correct send
+  if (delay==0)  // if the byte was not correct sent
     return 7;
   
   clearInteruptFlag();   
     
   setRegBit(IICC1, TXAK);  // No acknowledge signal response is sent
   
-  temperature |= getReg(IICD);
+  tmp2 = getReg(IICD);
+  temperature = temperature | tmp2;
   
   *temp_pointer = temperature;
   
@@ -77,6 +79,9 @@ int getTemperature(int* temp_pointer){
     
   if (delay==0)  // if the byte was not correct send
     return 7;
+  
+  // for tests only delete after this
+  *temp_pointer = getReg(IICD); 
   
   clearInteruptFlag();
   
