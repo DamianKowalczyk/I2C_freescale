@@ -35,7 +35,7 @@ int getTemperature(int* temp_pointer){
   
   setTransmitMode();
     
-  sendStartSignal();
+  EI2C1_SendStart();
   
   //the function below are not correct     
     

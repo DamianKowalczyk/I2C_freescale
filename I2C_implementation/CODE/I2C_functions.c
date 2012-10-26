@@ -19,7 +19,7 @@
 
 /* MODULE I2C_functions */  
 
-void sendStartSignal() {
+void EI2C1_SendStart() {
   
   if(getRegBit(IICC1, MST)==1)
     clrRegBit(IICC1, MST);     
