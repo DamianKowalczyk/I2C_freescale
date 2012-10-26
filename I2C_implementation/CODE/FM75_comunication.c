@@ -31,7 +31,8 @@ int getTemperature(int* temp_pointer){
   
           
   //clearInteruptFlag();
-  setRegBit(IICC1, IICEN);  // enable I2C
+// 1 comment 
+  //setRegBit(IICC1, IICEN);  // enable I2C
   
   setTransmitMode();
     
@@ -81,8 +82,8 @@ int getTemperature(int* temp_pointer){
   if (delay==0)  // if the byte was not correct send
     return 7;
   
-  
-  clrRegBit(IICC1, IICEN);  // disable I2C
+  I2C_SendStop();
+  //clrRegBit(IICC1, IICEN);  // disable I2C
   
   // for tests only delete after this
   tmp2 = getReg(IICD); 
@@ -91,8 +92,10 @@ int getTemperature(int* temp_pointer){
   
   
   clearInteruptFlag();
+//2 added this line  
+  //setRegBit(IICC1, IICEN);  // enable I2C
   
-  I2C_SendStop();
+  
   
   return 1;
 

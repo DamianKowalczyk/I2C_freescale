@@ -105,17 +105,15 @@ byte I2C_ReceiveByte_Ack(char* data){
   if (delay==0)  // if the byte was not correct sent
     return TRANSMISSION_FAILD;
   
-  
-  clrRegBit(IICC1, IICEN);  // disable I2C   
-  
+  I2C_SendStop();
+    
   *data = getReg(IICD); 
-  
-  setRegBit(IICC1, IICEN);  // enable I2C
-  
+    
   return OK;
   
 }
 
+// this function sends stop signal before end to get information from IICD registry
 byte I2C_ReceiveByte_No_Ack(char* data){
   int delay = 65535;
 
@@ -130,17 +128,81 @@ byte I2C_ReceiveByte_No_Ack(char* data){
     delay--;
     
   if (delay==0)  // if the byte was not correct sent
-    return TRANSMISSION_FAILD;
+    return TRANSMISSION_FAILD;   
   
-  
-  clrRegBit(IICC1, IICEN);  // disable I2C   
+  I2C_SendStop();   
   
   *data = getReg(IICD); 
   
-  setRegBit(IICC1, IICEN);  // enable I2C
-  
   return OK; 
 }
+
+byte I2C_Receive_N_Bytes(char* data, byte n)
+{
+  int delay = 65535;
+  
+  if (n==1)
+  {
+  
+    clearInteruptFlag();
+    
+    setRegBit(IICC1, TXAK);  // No acknowledge signal response is sent
+    getReg(IICD);
+    
+    while(getRegBit(IICS, IICIF) == 0 && delay != 0)  // wait for copletly sent byte
+    delay--;
+    
+    if (delay==0)  // if the byte was not correct sent
+      return TRANSMISSION_FAILD;
+       
+  } 
+  else if(n>1)
+  {
+    
+    clearInteruptFlag();
+    
+    clrRegBit(IICC1, TXAK);  // ACK signal response is sent
+    getReg(IICD);
+    
+    delay = 65535;
+    while(getRegBit(IICS, IICIF) == 0 && delay != 0)  // wait for copletly sent byte
+    delay--;
+    
+    if (delay==0)  // if the byte was not correct sent
+      return TRANSMISSION_FAILD;
+    
+    for(n; n>1; n--)
+    {
+      if((n-1)==1)
+        setRegBit(IICC1, TXAK);  // No acknowledge signal response is sent
+        
+      *data = getReg(IICD);
+      
+      delay = 65535;
+      while(getRegBit(IICS, IICIF) == 0 && delay != 0)  // wait for copletly sent byte
+      delay--;
+      
+      if (delay==0)  // if the byte was not correct sent
+        return TRANSMISSION_FAILD;
+      
+      data++;  
+    }
+  }
+  
+  I2C_SendStop();
+  
+  *data = getReg(IICD);
+  
+  delay = 65535;
+  while(getRegBit(IICS, IICIF) == 0 && delay != 0)  // wait for copletly sent byte
+    delay--;
+    
+  if (delay==0)  // if the byte was not correct sent
+    return TRANSMISSION_FAILD;
+  
+  return OK;
+    
+}                                            
 
 
 
