@@ -18,6 +18,10 @@
   // address of FM75 is 1001111
 /* The same initial settings of bus speed as in expander should work also for this device */
 
+int convertToCelsjusz(int temper){  
+  return ((temper>>7)/2); 
+}
+
 int getTemperature(int* temp_pointer){
 
   int temperature = 0;
@@ -27,6 +31,7 @@ int getTemperature(int* temp_pointer){
   
           
   //clearInteruptFlag();
+  setRegBit(IICC1, IICEN);  // enable I2C
   
   setTransmitMode();
     
@@ -54,10 +59,8 @@ int getTemperature(int* temp_pointer){
   setReceiveMode();  
   
   clrRegBit(IICC1, TXAK); // send ack after receiving first byte of data
-  tmp = getReg(IICD);
-  temperature = tmp <<8; 
-   
-  
+  getReg(IICD);
+    
   delay = 65535;
   while(getRegBit(IICS, IICIF) == 0 && delay != 0)  // wait for copletly sent byte
     delay--;
@@ -69,10 +72,7 @@ int getTemperature(int* temp_pointer){
     
   setRegBit(IICC1, TXAK);  // No acknowledge signal response is sent
   
-  tmp2 = getReg(IICD);
-  temperature = temperature | tmp2;
-  
-  *temp_pointer = temperature;
+  tmp = getReg(IICD);    
   
   while(getRegBit(IICS, IICIF) == 0 && delay != 0)  // wait for copletly sent byte
     delay--;
@@ -80,8 +80,14 @@ int getTemperature(int* temp_pointer){
   if (delay==0)  // if the byte was not correct send
     return 7;
   
+  
+  clrRegBit(IICC1, IICEN);  
+  
   // for tests only delete after this
-  *temp_pointer = getReg(IICD); 
+  tmp2 = getReg(IICD); 
+  temperature = tmp<<8 | tmp2;   
+  *temp_pointer = temperature;
+  
   
   clearInteruptFlag();
   
@@ -89,7 +95,12 @@ int getTemperature(int* temp_pointer){
   
   return 1;
 
+}
 
+void checkTemperature(int* temp_pointer){
+  int tmp =0;
+  getTemperature(&tmp);
+  *temp_pointer =  convertToCelsjusz(tmp);
 }
 
 

@@ -84,15 +84,23 @@ void main(void)
   }
   */
   
-  
+  /*
   for (j=0;j<10;j++){
     
     table[j] = getTemperature(data_p);
     data_p++;
     for (a=0; a<200; a++)
-      for (b=0; b<24000; b++)
-        ;    
+      for (b=0; b<24000; b++)        ;    
   }
+  */
+  for (j=0;j<10;j++){
+    
+    checkTemperature(data_p);
+    data_p++;
+    for (a=0; a<200; a++)
+      for (b=0; b<24000; b++)        ;    
+  }
+  
   
 
   /*** Don't write any code pass this line, or it will be deleted during code generation. ***/

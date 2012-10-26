@@ -6,7 +6,7 @@
 **     Component : Init_IIC
 **     Version   : Component 01.065, Driver 01.17, CPU db: 3.00.053
 **     Compiler  : CodeWarrior ColdFireV1 C Compiler
-**     Date/Time : 2012-10-24, 21:14
+**     Date/Time : 2012-10-26, 16:47
 **     Abstract  :
 **          This file implements the IIC (IIC1) module initialization
 **          according to the Peripheral Initialization Bean settings, and defines
@@ -34,7 +34,7 @@
 **          SCL pin signal                                 : 
 **          Interrupts                                     : 
 **          Interrupt                                      : Viic1
-**          IIC interrupt                                  : Enabled
+**          IIC interrupt                                  : Disabled
 **          ISR name                                       : I2C_interrupt_handler
 **          Initialization                                 : 
 **          Call Init method                               : yes
@@ -106,8 +106,8 @@ void IIC2_Init(void)
   setReg8(IICS, 0x92);                 /* Clear the interrupt flags */ 
   /* IICC1: IICEN=1 */
   setReg8Bits(IICC1, 0x80);             
-  /* IICC1: IICEN=1,IICIE=1,MST=0,TX=1,TXAK=0,RSTA=0,??=0,??=0 */
-  setReg8(IICC1, 0xD0);                 
+  /* IICC1: IICEN=1,IICIE=0,MST=0,TX=1,TXAK=0,RSTA=0,??=0,??=0 */
+  setReg8(IICC1, 0x90);                 
 }
 
 /* END IIC2. */
