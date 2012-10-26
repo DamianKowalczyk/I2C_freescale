@@ -56,12 +56,12 @@ void main(void)
     
   for (j=0;j<10;j++){
     
-    table[i] = sendSampleDataToExpander_New(0b10101010);
+    table[i] = sendSampleDataToExpander(0b10101010);
     i++;
     for (a=0; a<200; a++)
       for (b=0; b<24000; b++)
         ;    
-    table[i] = sendSampleDataToExpander_New(0b01010101);
+    table[i] = sendSampleDataToExpander(0b01010101);
     i++;
     for (a=0; a<200; a++)
       for (b=0; b<24000; b++)

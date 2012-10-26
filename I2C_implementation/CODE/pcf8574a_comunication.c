@@ -13,63 +13,6 @@
 
 /* MODULE pcf8574a_comunication */
 
-int sendSampleDataToExpander(char number) 
-{
-
-  int delay = 65536;
-      
-  clearInteruptFlag();
-  
-  // check if it is in transmit mode
-    // this fragment was changed
-  if(getRegBit(IICC1, TX)==0)
-    setRegBit(IICC1, TX);
-    
-  I2C_SendStart();     
-    
-  sendByteOfData(0b01111110);
-  
-  while(getRegBit(IICS, IICIF) == 0 && delay != 0)  // wait for copletly sent byte
-    delay--;
-    
-  if (delay==0)  // if the byte was not correct send
-    return 7;
-  
-  clearInteruptFlag();
-    
-  delay = 65535;  
-  
-  while(getRegBit(IICS, RXAK) && delay != 0)  // wait for ack
-    delay--;
-    
-  if (delay==0)  // end if no ack get
-    return 5;
-    
-  sendByteOfData(number);
-   
-  delay = 65535;
-  
-  while(getRegBit(IICS, IICIF) == 0 && delay != 0)  // wait for copletly sent byte
-    delay--;
-    
-  if (delay==0)  // if the byte was not correct send
-    return 8;
-    
-  clearInteruptFlag();
-  
-  delay = 65535;
-  while(getRegBit(IICS, RXAK) && delay != 0)  // wait for ack
-    delay--;
-    
-  if (delay==0)
-    return 6;
-    
-  I2C_SendStop();
-  
-  return 1;
-    
-} 
-
 int sendSampleDataToExpander_New(char number) 
 {
   byte result = 15;
