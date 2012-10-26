@@ -35,7 +35,7 @@ int getTemperature(int* temp_pointer){
   
   setTransmitMode();
     
-  EI2C1_SendStart();
+  I2C_SendStart();
   
   //the function below are not correct     
     
@@ -91,7 +91,7 @@ int getTemperature(int* temp_pointer){
   
   clearInteruptFlag();
   
-  EI2C1_SendStop();
+  I2C_SendStop();
   
   return 1;
 

@@ -33,8 +33,8 @@
   000008A2 00000002 .text   I2C_interrupt_handler	(Events.c)
   000008A4 000000B0 .text   main	(I2C_implementation.c)
   00000954 0000002C .text   IIC2_Init	(IIC2.c)
-  00000980 00000024 .text   EI2C1_SendStart	(I2C_functions.c)
-  000009A4 00000024 .text   EI2C1_SendStop	(I2C_functions.c)
+  00000980 00000024 .text   I2C_SendStart	(I2C_functions.c)
+  000009A4 00000024 .text   I2C_SendStop	(I2C_functions.c)
   000009C8 0000000E .text   clearInteruptFlag	(I2C_functions.c)
   000009D6 0000000E .text   setTransmitMode	(I2C_functions.c)
   000009E4 0000000E .text   setReceiveMode	(I2C_functions.c)
@@ -104,5 +104,5 @@
   00800014 00800014 00000000 .custom    userram
   00800014 00000C88 00000018 .romp      userram
 
-# Link start time: Fri Oct 26 18:51:56 2012
-# Link end time: Fri Oct 26 18:51:56 2012
+# Link start time: Fri Oct 26 19:10:54 2012
+# Link end time: Fri Oct 26 19:10:54 2012

@@ -25,7 +25,7 @@ int sendSampleDataToExpander(char number)
   if(getRegBit(IICC1, TX)==0)
     setRegBit(IICC1, TX);
     
-  EI2C1_SendStart();     
+  I2C_SendStart();     
     
   sendByteOfData(0b01111110);
   
@@ -64,7 +64,7 @@ int sendSampleDataToExpander(char number)
   if (delay==0)
     return 6;
     
-  EI2C1_SendStop();
+  I2C_SendStop();
   
   return 1;
     
@@ -82,7 +82,7 @@ byte getSampleDataFromExpander(char* data){
   if(getRegBit(IICC1, TX)==0)
     setRegBit(IICC1, TX);
     
-  EI2C1_SendStart();     
+  I2C_SendStart();     
     
   sendByteOfData(0b01111111); // inform expander that i will get some data from him
   
@@ -116,7 +116,7 @@ byte getSampleDataFromExpander(char* data){
   
   clearInteruptFlag();
   
-  EI2C1_SendStop();
+  I2C_SendStop();
   
   return 1;
   
