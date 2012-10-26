@@ -64,7 +64,7 @@ int sendSampleDataToExpander(char number)
   if (delay==0)
     return 6;
     
-  sendStopSignal();
+  EI2C1_SendStop();
   
   return 1;
     
@@ -116,7 +116,7 @@ byte getSampleDataFromExpander(char* data){
   
   clearInteruptFlag();
   
-  sendStopSignal();
+  EI2C1_SendStop();
   
   return 1;
   

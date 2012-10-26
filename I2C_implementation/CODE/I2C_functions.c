@@ -27,7 +27,7 @@ void sendStartSignal() {
   setRegBit(IICC1, MST); // start signal: mst 0->1
 }
 
-void sendStopSignal(){
+void EI2C1_SendStop(){
 
   if(getRegBit(IICC1, MST)==0)
     setRegBit(IICC1, MST);   // start signal: mst 0->1  

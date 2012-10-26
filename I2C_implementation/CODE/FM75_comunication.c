@@ -91,7 +91,7 @@ int getTemperature(int* temp_pointer){
   
   clearInteruptFlag();
   
-  sendStopSignal();
+  EI2C1_SendStop();
   
   return 1;
 
