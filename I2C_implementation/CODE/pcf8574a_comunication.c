@@ -70,6 +70,27 @@ int sendSampleDataToExpander(char number)
     
 } 
 
+int sendSampleDataToExpander_New(char number) 
+{
+  byte result = 15;
+      
+  I2C_SendStart();     
+  
+  result = I2C_SendByte_Ack(0b01111110); // send address of Expander                 
+  //sendByteOfData(0b01111110);
+  if(result!=0)
+    return result;  
+ 
+  result = I2C_SendByte_Ack(number); // send address                  
+  //sendByteOfData(number);
+    
+  I2C_SendStop();
+  
+  return result;
+    
+} 
+
+
 
 byte getSampleDataFromExpander(char* data){
   

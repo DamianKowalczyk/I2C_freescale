@@ -47,8 +47,7 @@ byte I2C_SendByte_Ack(char data){
       
   clearInteruptFlag();
   setTransmitMode();
-    
-  I2C_SendStart();    
+      
   sendByteOfData(data);
   
   while(getRegBit(IICS, IICIF) == 0 && delay != 0)  // wait for copletly sent byte
@@ -76,8 +75,7 @@ byte I2C_SendByte_No_Ack(char data){
       
   clearInteruptFlag();
   setTransmitMode();
-      
-  I2C_SendStart();     
+     
   sendByteOfData(data);
   
   while(getRegBit(IICS, IICIF) == 0 && delay != 0)  // wait for copletly sent byte

@@ -53,23 +53,21 @@ void main(void)
   /* Write your code here */
   /* For example: for(;;) { } */
   
-  /*
-  
+    
   for (j=0;j<10;j++){
     
-    table[i] = sendSampleDataToExpander(data);
+    table[i] = sendSampleDataToExpander_New(0b10101010);
     i++;
     for (a=0; a<200; a++)
       for (b=0; b<24000; b++)
         ;    
-    table[i] = sendSampleDataToExpander(0b01010101);
+    table[i] = sendSampleDataToExpander_New(0b01010101);
     i++;
     for (a=0; a<200; a++)
       for (b=0; b<24000; b++)
         ;      
   }
   
-  */
   
   
   
@@ -93,6 +91,7 @@ void main(void)
       for (b=0; b<24000; b++)        ;    
   }
   */
+  /*
   for (j=0;j<10;j++){
     
     checkTemperature(data_p);
@@ -100,7 +99,7 @@ void main(void)
     for (a=0; a<200; a++)
       for (b=0; b<24000; b++)        ;    
   }
-  
+  */
   
 
   /*** Don't write any code pass this line, or it will be deleted during code generation. ***/
