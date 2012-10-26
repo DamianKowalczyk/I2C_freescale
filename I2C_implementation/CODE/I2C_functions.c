@@ -18,6 +18,11 @@
 #define NO_ACK_RECEIVED              2             /* device didn't send ACK */
 /* Include inherited beans */
 
+void clearInteruptFlag();
+void setTransmitMode();
+void setReceiveMode();
+void sendByteOfData(char data);
+
 
 /* MODULE I2C_functions */  
 
@@ -35,29 +40,7 @@ void I2C_SendStop(){
     setRegBit(IICC1, MST);    
   
   clrRegBit(IICC1, MST); // stop signal: mst 1->0
-}
-
-void clearInteruptFlag(){
-   
-  setRegBit(IICS, IICIF);  // clear interrupt flag
-}
-
-void setTransmitMode(){
-  //if(getRegBit(IICC1, TX)==0)
-    setRegBit(IICC1, TX);
-}
-
-void setReceiveMode(){
-  //if(getRegBit(IICC1, TX)==1)
-    clrRegBit(IICC1, TX); 
-}
-
-
-void sendByteOfData(char data){
-
-  setReg(IICD, data); // write sequence to sent  
-}
-
+} 
 
 byte I2C_SendByte_Ack(char data){
   int delay = 65535;
@@ -105,8 +88,7 @@ byte I2C_SendByte_No_Ack(char data){
   
   clearInteruptFlag();
   
-  
-  
+  return OK;  
 }
 
 
@@ -117,6 +99,26 @@ void I2C_ReceiveByte_Ack(char* data){
 }
 
 void I2C_ReceiveByte_No_Ack(char* data){
+}
+
+
+
+void clearInteruptFlag(){
+   
+  setRegBit(IICS, IICIF);  // clear interrupt flag
+}
+
+void setTransmitMode(){
+  setRegBit(IICC1, TX);
+}
+
+void setReceiveMode(){
+  clrRegBit(IICC1, TX); 
+}
+
+void sendByteOfData(char data){
+
+  setReg(IICD, data); // write sequence to sent  
 }
 
 /* END I2C_functions */
