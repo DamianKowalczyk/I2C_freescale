@@ -1,11 +1,11 @@
 Processor Expert Version 0434
-ProjectModificationStamp=14
+ProjectModificationStamp=15
 
 [Header]
 Name=I2C_implementation
 SavedBy=Damian
-ModificationStamp=14
-Date=2012-10-25
+ModificationStamp=15
+Date=2012-10-28
 Product=Processor Expert version 3.07 for Freescale HC(S)08/RS08/CFV1
 IDE=CW Plug-In IDE
 PEversion=4.34.0.5219
@@ -5205,8 +5205,8 @@ Value=default
 ItemSymbol=IICintena
 ReadOnly=No
 UserReadOnly=No
-Index=0
-Value=Yes
+Index=1
+Value=No
 [ItemState]
 ItemSymbol=SDALowCondGrp
 ReadOnly=No

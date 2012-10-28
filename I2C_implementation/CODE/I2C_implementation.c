@@ -82,7 +82,7 @@ void main(void)
   }
   */
   
-  
+   /*
   for (j=0;j<10;j++){
     
     table[j] = getTemperature(data_p);
@@ -90,8 +90,9 @@ void main(void)
     for (a=0; a<200; a++)
       for (b=0; b<24000; b++)        ;    
   }
+  */
   
-  /*
+ 
   for (j=0;j<10;j++){
     
     checkTemperature(data_p);
@@ -100,7 +101,8 @@ void main(void)
       for (b=0; b<24000; b++)
         ;    
   }
-  */
+  
+  
   
   
 

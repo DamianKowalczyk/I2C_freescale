@@ -134,13 +134,33 @@ int getTemperature_New(int* temp_pointer){
   
 }
 
+int getTemperature2(int* temp_pointer){
+  
+  char temperature[] = {0,0};
+    
+  byte result = 15;
+    
+  I2C_SendStart();
+  
+  result = I2C_SendByte_Ack(0b10011111);  // set address of FM75 
+  
+  if(result!=0)
+    return result;
+  
+  result = I2C_Receive_N_Bytes(temperature, 2);
+  
+  *temp_pointer = temperature[0]<<8 | temperature[1];
+  
+  return result;
+  
+}
+
 
 void checkTemperature(int* temp_pointer){
   int tmp =0;
   getTemperature(&tmp);
   *temp_pointer =  convertToCelsjusz(tmp);
 }
-
 
 
 /* END FM75_comunication */

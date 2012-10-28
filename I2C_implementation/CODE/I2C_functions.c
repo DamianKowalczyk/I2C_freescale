@@ -27,6 +27,8 @@ void sendByteOfData(char data);
 /* MODULE I2C_functions */  
 
 void I2C_SendStart() {
+
+  setTransmitMode(); 
   
   if(getRegBit(IICC1, MST)==1) //maybe i should wait after this change
     clrRegBit(IICC1, MST);     
@@ -35,6 +37,8 @@ void I2C_SendStart() {
 }
 
 void I2C_SendStop(){
+
+  setTransmitMode();
 
   if(getRegBit(IICC1, MST)==0)
     setRegBit(IICC1, MST);    
@@ -107,7 +111,9 @@ byte I2C_ReceiveByte_Ack(char* data){
   
   I2C_SendStop();
     
-  *data = getReg(IICD); 
+  *data = getReg(IICD);
+  
+  setTransmitMode(); 
     
   return OK;
   
@@ -132,12 +138,14 @@ byte I2C_ReceiveByte_No_Ack(char* data){
   
   I2C_SendStop();   
   
-  *data = getReg(IICD); 
+  *data = getReg(IICD);
+  
+  setTransmitMode(); 
   
   return OK; 
 }
 
-byte I2C_Receive_N_Bytes(char* data, byte n)
+byte I2C_Receive_N_Bytes(char* data, byte n)   // i'm not sure about byte value - how exacly it is interpreted
 {
   int delay = 65535;
   
@@ -186,7 +194,7 @@ byte I2C_Receive_N_Bytes(char* data, byte n)
         return TRANSMISSION_FAILD;
       
       data++;  
-    }
+    }    
   }
   
   I2C_SendStop();
@@ -199,6 +207,8 @@ byte I2C_Receive_N_Bytes(char* data, byte n)
     
   if (delay==0)  // if the byte was not correct sent
     return TRANSMISSION_FAILD;
+  
+  setTransmitMode();
   
   return OK;
     
