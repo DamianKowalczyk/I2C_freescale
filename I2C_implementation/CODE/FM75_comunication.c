@@ -76,6 +76,8 @@ int getTemperature(int* temp_pointer){
   
   tmp = getReg(IICD);    
   
+  delay = 65535;
+  
   while(getRegBit(IICS, IICIF) == 0 && delay != 0)  // wait for copletly sent byte
     delay--;
     

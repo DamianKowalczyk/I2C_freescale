@@ -93,6 +93,7 @@ byte I2C_SendByte_No_Ack(char data){
   return OK;  
 }
 
+// this function sends stop signal before end to get information from IICD registry
 byte I2C_ReceiveByte_Ack(char* data){
   int delay = 65535;
 
@@ -153,6 +154,7 @@ byte I2C_Receive_N_Bytes(char* data, byte n)   // i'm not sure about byte value 
   {
   
     clearInteruptFlag();
+    setReceiveMode();
     
     setRegBit(IICC1, TXAK);  // No acknowledge signal response is sent
     getReg(IICD);
@@ -168,6 +170,7 @@ byte I2C_Receive_N_Bytes(char* data, byte n)   // i'm not sure about byte value 
   {
     
     clearInteruptFlag();
+    setReceiveMode();
     
     clrRegBit(IICC1, TXAK);  // ACK signal response is sent
     getReg(IICD);
@@ -181,6 +184,8 @@ byte I2C_Receive_N_Bytes(char* data, byte n)   // i'm not sure about byte value 
     
     for(n; n>1; n--)
     {
+      clearInteruptFlag();
+      
       if((n-1)==1)
         setRegBit(IICC1, TXAK);  // No acknowledge signal response is sent
         
@@ -208,7 +213,7 @@ byte I2C_Receive_N_Bytes(char* data, byte n)   // i'm not sure about byte value 
   if (delay==0)  // if the byte was not correct sent
     return TRANSMISSION_FAILD;
   
-  setTransmitMode();
+  //setTransmitMode();
   
   return OK;
     

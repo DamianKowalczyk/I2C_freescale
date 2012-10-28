@@ -39,16 +39,16 @@
   000009DE 0000000E .text   setTransmitMode	(I2C_functions.c)
   000009EC 0000000E .text   setReceiveMode	(I2C_functions.c)
   000009FA 0000000E .text   sendByteOfData	(I2C_functions.c)
-  00000A08 00000140 .text   getTemperature	(FM75_comunication.c)
-  00000B48 00000042 .text   checkTemperature	(FM75_comunication.c)
-  00000B8A 0000001C .text   __call_static_initializers	(librt.a cf_staticinitia)
-  00000BA6 0000002C .text   __destroy_global_chain	(librt.a cf_staticinitia)
-  00000BD2 0000003E .text   __ldivu__	(librt.a cf_runtime.o   )
-  00000C10 00000034 .text   __ldiv__	(librt.a cf_runtime.o   )
-  00000C44 0000000C .text   _ewl_exit	(librt.a abort_exit.o   )
-  00000C50 00000018 .text   __clear	(librt.a cpluslib.o     )
-#>00000C68          ___ROM_AT (linker command file)
-#>00000C68          ___DATA_ROM (linker command file)
+  00000A08 0000014A .text   getTemperature	(FM75_comunication.c)
+  00000B52 00000042 .text   checkTemperature	(FM75_comunication.c)
+  00000B94 0000001C .text   __call_static_initializers	(librt.a cf_staticinitia)
+  00000BB0 0000002C .text   __destroy_global_chain	(librt.a cf_staticinitia)
+  00000BDC 0000003E .text   __ldivu__	(librt.a cf_runtime.o   )
+  00000C1A 00000034 .text   __ldiv__	(librt.a cf_runtime.o   )
+  00000C4E 0000000C .text   _ewl_exit	(librt.a abort_exit.o   )
+  00000C5A 00000018 .text   __clear	(librt.a cpluslib.o     )
+#>00000C74          ___ROM_AT (linker command file)
+#>00000C74          ___DATA_ROM (linker command file)
 
 # .data
 #>00800000          ___DATA_RAM (linker command file)
@@ -85,10 +85,10 @@
 #>00000010          ___stack_safety (linker command file)
 #>00800814          __SP_INIT (linker command file)
 #>00800814          ___SP_AFTER_RESET (linker command file)
-#>00000C78          _romp_at (linker command file)
+#>00000C84          _romp_at (linker command file)
 
 # .romp
-#>00000C78          __S_romp (linker command file)
+#>00000C84          __S_romp (linker command file)
 
 
 # Memory map:
@@ -97,12 +97,12 @@
   0000040D 0000040D 00000001 .abs_NVPROT_INIT abs_NVPROT_INIT
   0000040F 0000040F 00000001 .abs_NVOPT_INIT abs_NVOPT_INIT
   00000410 00000410 00000000 .code      code
-  00000410 00000410 00000858 .text      code
+  00000410 00000410 00000864 .text      code
   00800000 00800000 00000000 .userram   userram
-  00800000 00000C68 00000010 .data      userram
+  00800000 00000C74 00000010 .data      userram
   00800010 00800010 00000004 .bss       userram
   00800014 00800014 00000000 .custom    userram
-  00800014 00000C78 00000018 .romp      userram
+  00800014 00000C84 00000018 .romp      userram
 
-# Link start time: Sun Oct 28 18:04:45 2012
-# Link end time: Sun Oct 28 18:04:45 2012
+# Link start time: Sun Oct 28 18:14:26 2012
+# Link end time: Sun Oct 28 18:14:26 2012
