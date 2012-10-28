@@ -160,7 +160,7 @@ int getTemperature2(int* temp_pointer){
 
 void checkTemperature(int* temp_pointer){
   int tmp =0;
-  getTemperature(&tmp);
+  getTemperature2(&tmp);
   *temp_pointer =  convertToCelsjusz(tmp);
 }
 
