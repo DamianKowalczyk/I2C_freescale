@@ -20,21 +20,19 @@ int sendSampleDataToExpander(char number)
   I2C_SendStart();     
   
   result = I2C_SendByte_Ack(0b01111110); // send address of Expander                 
-  //sendByteOfData(0b01111110);
+  
   if(result!=0)
     return result;  
  
-  result = I2C_SendByte_Ack(number); // send address                  
-  //sendByteOfData(number);
-    
+  result = I2C_SendByte_Ack(number); // send value to expand                  
+      
   I2C_SendStop();
   
-  return 0;
-    
+  return 0;    
 } 
 
-byte getSampleDataFromExpander(char* data){
-  
+byte getSampleDataFromExpander(char* data)
+{    
   int delay = 65536;
           
   clearInteruptFlag();
@@ -80,9 +78,23 @@ byte getSampleDataFromExpander(char* data){
   
   I2C_SendStop();
   
-  return 1;
-  
+  return 1;   
 }
 
+byte getSampleDataFromExpander2(char* data)
+{           
+  byte result = 15;
+      
+  I2C_SendStart();     
+  
+  result = I2C_SendByte_Ack(0b01111111); // send address of Expander                 
+  
+  if(result!=0)
+    return result;  
+ 
+  result = I2C_Receive_N_Bytes(data, 1);
+  
+  return 0;   
+}
 
 /* END pcf8574a_comunication */

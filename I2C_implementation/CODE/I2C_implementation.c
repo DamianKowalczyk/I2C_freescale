@@ -27,20 +27,23 @@
 #include "IO_Map.h"
 
 
+void wait()
+{
+  int a,b;
+  for (a=0; a<100; a++)
+      for (b=0; b<24000; b++)
+        ;    
+}
+
 /* User includes (#include below this line is not maintained by Processor Expert) */
 
 void main(void)
 {
-
-  int result = 0;
-  char data = 0b10101010;
-  int a,b;
-  char table[] = {0,0,0,0,0,0,0,0,0,0};
   byte i = 0;
-  int j;
+  byte j;
+  char results[] = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}; 
   char dataFromExpander[] = {0,0,0,0,0,0,0,0,0,0};
-  char* data_pointer = dataFromExpander;
-  
+    
   int dataFromTerm[] = {0,0,0,0,0,0,0,0,0,0};
   int* data_p = dataFromTerm;
   
@@ -53,55 +56,40 @@ void main(void)
   /* Write your code here */
   /* For example: for(;;) { } */
   
-  /*  
-  for (j=0;j<10;j++){
-    
-    table[i] = sendSampleDataToExpander(0b10101010);
+  /* 
+  for (j=0, i=0;j<10;j++)
+  {    
+    results[i] = sendSampleDataToExpander(0b10101010);
     i++;
-    for (a=0; a<200; a++)
-      for (b=0; b<24000; b++)
-        ;    
-    table[i] = sendSampleDataToExpander(0b01010101);
+    wait();
+    results[i] = sendSampleDataToExpander(0b01010101);
     i++;
-    for (a=0; a<200; a++)
-      for (b=0; b<24000; b++)
-        ;      
-  }
+    wait();      
+  }  
   */
   
-  
-  
-  /*
-  for (j=0;j<10;j++){
-    
-    table[j] = getSampleDataFromExpander(data_pointer);
-    data_pointer++;
-    for (a=0; a<200; a++)
-      for (b=0; b<24000; b++)
-        ;    
+  for (j=0;j<10;j++)
+  {    
+    results[j] = getSampleDataFromExpander2(&dataFromExpander[j]);     
+    wait();  
   }
-  */
+  
   
   /* 
-  for (j=0;j<10;j++){
-    
-    table[j] = getTemperature2(data_p);
-    data_p++;
-    for (a=0; a<200; a++)
-      for (b=0; b<24000; b++)        ;    
+  for (j=0;j<10;j++)
+  {    
+    results[j] = getTemperature2(&dataFromTerm[j]);
+    wait();    
   }
   */
   
-  
-  for (j=0;j<10;j++){
-    
-    checkTemperature(data_p);
-    data_p++;
-    for (a=0; a<200; a++)
-      for (b=0; b<24000; b++)
-        ;    
+   /*
+  for (j=0;j<10;j++)
+  {    
+    checkTemperature(&dataFromTerm[j]);
+    wait();    
   }
-  
+  */
   
   
   

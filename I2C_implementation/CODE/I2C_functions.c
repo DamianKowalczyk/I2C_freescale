@@ -28,8 +28,8 @@ void sendByteOfData(char data);
 
 /* MODULE I2C_functions */  
 
-void I2C_SendStart() {
-
+void I2C_SendStart() 
+{ 
   setTransmitMode(); 
   
   if(getRegBit(IICC1, MST)==1) //maybe i should wait after this change
@@ -38,8 +38,8 @@ void I2C_SendStart() {
   setRegBit(IICC1, MST); // start signal: mst 0->1
 }
 
-void I2C_SendStop(){
-
+void I2C_SendStop()
+{       
   setTransmitMode();
 
   if(getRegBit(IICC1, MST)==0)
@@ -48,7 +48,8 @@ void I2C_SendStop(){
   clrRegBit(IICC1, MST); // stop signal: mst 1->0
 } 
 
-byte I2C_SendByte_Ack(char data){
+byte I2C_SendByte_Ack(char data)
+{
   int delay = del;
       
   clearInteruptFlag();
@@ -73,8 +74,8 @@ byte I2C_SendByte_Ack(char data){
   return OK;
 }
 
-byte I2C_SendByte_No_Ack(char data){
-
+byte I2C_SendByte_No_Ack(char data)
+{                         
   int delay = del;
       
   clearInteruptFlag();
@@ -92,7 +93,8 @@ byte I2C_SendByte_No_Ack(char data){
 }
 
 // this function sends stop signal before end to get information from IICD registry
-byte I2C_ReceiveByte_No_Ack(char* data){
+byte I2C_ReceiveByte_No_Ack(char* data)
+{
   int delay = del;
 
   clearInteruptFlag();
@@ -184,28 +186,29 @@ byte I2C_Receive_N_Bytes(char* data, byte n)   // i'm not sure about byte value 
   if (delay==0)  // if the byte was not correct sent
     return TRANSMISSION_FAILD;
   
-  return OK;
-    
+  return OK;    
 }                                            
 
 
 
 
-void clearInteruptFlag(){
-   
+void clearInteruptFlag()
+{                   
   setRegBit(IICS, IICIF);  // clear interrupt flag
 }
 
-void setTransmitMode(){
+void setTransmitMode()
+{
   setRegBit(IICC1, TX);
 }
 
-void setReceiveMode(){
+void setReceiveMode()
+{
   clrRegBit(IICC1, TX); 
 }
 
-void sendByteOfData(char data){
-
+void sendByteOfData(char data)
+{      
   setReg(IICD, data); // write sequence to sent  
 }
 
