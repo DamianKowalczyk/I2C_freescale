@@ -16,6 +16,8 @@
 #define OK                           0             /* transmission successfull */
 #define TRANSMISSION_FAILD           1             /* transmission faild */
 #define NO_ACK_RECEIVED              2             /* device didn't send ACK */
+
+#define del                          65535         /* value of waiting time for IICIF or ACK from slave */
 /* Include inherited beans */
 
 void clearInteruptFlag();
@@ -47,7 +49,7 @@ void I2C_SendStop(){
 } 
 
 byte I2C_SendByte_Ack(char data){
-  int delay = 65535;
+  int delay = del;
       
   clearInteruptFlag();
   setTransmitMode();
@@ -59,10 +61,8 @@ byte I2C_SendByte_Ack(char data){
     
   if (delay==0)  
     return TRANSMISSION_FAILD;
-  
-  //clearInteruptFlag();
     
-  delay = 65535;  
+  delay = del;  
   
   while(getRegBit(IICS, RXAK) && delay != 0)  // wait for ACK
     delay--;
@@ -75,7 +75,7 @@ byte I2C_SendByte_Ack(char data){
 
 byte I2C_SendByte_No_Ack(char data){
 
-  int delay = 65535;
+  int delay = del;
       
   clearInteruptFlag();
   setTransmitMode();
@@ -88,41 +88,12 @@ byte I2C_SendByte_No_Ack(char data){
   if (delay==0)  
     return TRANSMISSION_FAILD;
   
-  //clearInteruptFlag();
-  
   return OK;  
 }
 
 // this function sends stop signal before end to get information from IICD registry
-byte I2C_ReceiveByte_Ack(char* data){
-  int delay = 65535;
-
-  clearInteruptFlag();
-  
-  setReceiveMode();  
-  
-  clrRegBit(IICC1, TXAK); // send ack after succesfull receiving byte of data
-  getReg(IICD);    
-  
-  while(getRegBit(IICS, IICIF) == 0 && delay != 0)  // wait for copletly sent byte
-    delay--;
-    
-  if (delay==0)  // if the byte was not correct sent
-    return TRANSMISSION_FAILD;
-  
-  I2C_SendStop();
-    
-  *data = getReg(IICD);
-  
-  setTransmitMode(); 
-    
-  return OK;
-  
-}
-
-// this function sends stop signal before end to get information from IICD registry
 byte I2C_ReceiveByte_No_Ack(char* data){
-  int delay = 65535;
+  int delay = del;
 
   clearInteruptFlag();
   
@@ -148,7 +119,7 @@ byte I2C_ReceiveByte_No_Ack(char* data){
 
 byte I2C_Receive_N_Bytes(char* data, byte n)   // i'm not sure about byte value - how exacly it is interpreted
 {
-  int delay = 65535;
+  int delay = del;
   
   if (n==1)
   {
@@ -175,7 +146,7 @@ byte I2C_Receive_N_Bytes(char* data, byte n)   // i'm not sure about byte value 
     clrRegBit(IICC1, TXAK);  // ACK signal response is sent
     getReg(IICD);
     
-    delay = 65535;
+    delay = del;
     while(getRegBit(IICS, IICIF) == 0 && delay != 0)  // wait for copletly sent byte
     delay--;
     
@@ -191,7 +162,7 @@ byte I2C_Receive_N_Bytes(char* data, byte n)   // i'm not sure about byte value 
         
       *data = getReg(IICD);
       
-      delay = 65535;
+      delay = del;
       while(getRegBit(IICS, IICIF) == 0 && delay != 0)  // wait for copletly sent byte
       delay--;
       
@@ -206,14 +177,12 @@ byte I2C_Receive_N_Bytes(char* data, byte n)   // i'm not sure about byte value 
   
   *data = getReg(IICD);
   
-  delay = 65535;
+  delay = del;
   while(getRegBit(IICS, IICIF) == 0 && delay != 0)  // wait for copletly sent byte
     delay--;
     
   if (delay==0)  // if the byte was not correct sent
     return TRANSMISSION_FAILD;
-  
-  //setTransmitMode();
   
   return OK;
     
