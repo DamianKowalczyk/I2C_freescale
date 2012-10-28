@@ -42,10 +42,8 @@ void main(void)
   byte i = 0;
   byte j;
   char results[] = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}; 
-  char dataFromExpander[] = {0,0,0,0,0,0,0,0,0,0};
-    
-  int dataFromTerm[] = {0,0,0,0,0,0,0,0,0,0};
-  int* data_p = dataFromTerm;
+  char dataFromExpander[] = {0,0,0,0,0,0,0,0,0,0};      
+  int dataFromTerm[] = {0,0,0,0,0,0,0,0,0,0};   
   
   /* Write your local variable definition here */
 
@@ -66,33 +64,27 @@ void main(void)
     i++;
     wait();      
   }  
-  */
-  
+  */   
+  /*
   for (j=0;j<10;j++)
   {    
-    results[j] = getSampleDataFromExpander2(&dataFromExpander[j]);     
+    results[j] = getSampleDataFromExpander(&dataFromExpander[j]);     
     wait();  
   }
-  
-  
+  */
   /* 
   for (j=0;j<10;j++)
   {    
-    results[j] = getTemperature2(&dataFromTerm[j]);
+    results[j] = getTemperature(&dataFromTerm[j]);
     wait();    
   }
   */
-  
-   /*
+     
   for (j=0;j<10;j++)
   {    
     checkTemperature(&dataFromTerm[j]);
     wait();    
-  }
-  */
-  
-  
-  
+  }   
 
   /*** Don't write any code pass this line, or it will be deleted during code generation. ***/
   /*** Processor Expert end of main routine. DON'T MODIFY THIS CODE!!! ***/
