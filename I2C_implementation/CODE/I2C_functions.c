@@ -48,6 +48,14 @@ void I2C_SendStop()
   clrRegBit(IICC1, MST); // stop signal: mst 1->0
 } 
 
+void I2C_SendRestart()   // i didnt check this function yet
+{
+  clearInteruptFlag();
+  setTransmitMode();
+  
+  setRegBit(IICC1, RSTA); // repeat start
+}
+
 byte I2C_SendByte_Ack(char data)
 {
   int delay = del;

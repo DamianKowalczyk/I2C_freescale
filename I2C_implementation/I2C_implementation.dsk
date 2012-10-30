@@ -11,37 +11,37 @@ StartupPrj=E:\disseration\project\I2C\I2C_implementation\I2C_implementation.pe
 [AppPanel]
 Status=hiden
 WindowState=NORMAL
-Rect=[-4|58|318|530]
+Rect=[-36|58|318|530]
 
 [CpuPanel]
 Status=hiden
 WindowState=NORMAL
-Rect=[500|88|500|320]
+Rect=[508|88|500|320]
 CpuPanViewMode=Default
 ViewSizeIndex=1
 
 [ErrorPanel]
-Status=Visible
+Status=hiden
 WindowState=NORMAL
-Rect=[0|621|500|107]
+Rect=[333|557|500|170]
 
 [ResourceMeter]
 Status=hiden
 WindowState=NORMAL
-Rect=[0|621|500|118]
+Rect=[8|621|500|118]
 
 [BeanSelector]
 Status=hiden
 WindowState=NORMAL
-Rect=[500|408|500|320]
+Rect=[508|408|500|320]
 BF_ForTgtCpuOnly=Yes
 BF_LicensedOnly=Yes
 BF_BA_AllQuestions=Yes
 
 [ObjInspector]
-Status=Visible
+Status=hiden
 WindowState=NORMAL
-Rect=[-14|99|946|533]
+Rect=[-6|99|946|533]
 ObjInspectorDockedWithPrphInit=No
 ColWidth01=334
 ColWidth02=647
@@ -59,7 +59,7 @@ ViewItemLevel=EXPERT
 [PrphInspector]
 Status=hiden
 WindowState=NORMAL
-Rect=[500|88|500|644]
+Rect=[508|88|500|644]
 ViewMode=PrphRegInit
 SortRegsByAddr=Yes
 GroupRegisters=No
@@ -91,7 +91,7 @@ FindScope=FROM_CURSOR
 FindHistory=0
 ReplaceHistory=0
 OpenFilesCount=0
-SelFile=E:\disseration\project\I2C\I2C_implementation\CODE\I2C_functions.c
+SelFile=E:\disseration\project\I2C\I2C_implementation\CODE\BMP085.c
 SelLine=-1
 FileHistory=0
 

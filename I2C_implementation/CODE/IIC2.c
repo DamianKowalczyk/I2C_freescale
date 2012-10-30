@@ -6,7 +6,7 @@
 **     Component : Init_IIC
 **     Version   : Component 01.065, Driver 01.17, CPU db: 3.00.053
 **     Compiler  : CodeWarrior ColdFireV1 C Compiler
-**     Date/Time : 2012-10-26, 16:47
+**     Date/Time : 2012-10-28, 22:42
 **     Abstract  :
 **          This file implements the IIC (IIC1) module initialization
 **          according to the Peripheral Initialization Bean settings, and defines
@@ -64,6 +64,7 @@
 **  User modules:
 **      I2C_implementation.c
 **      Events.c
+**      BMP085.c
 **      FM75_comunication.c
 **      pcf8574a_comunication.c
 **      I2C_functions.c
