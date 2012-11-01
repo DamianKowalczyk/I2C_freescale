@@ -167,7 +167,7 @@ byte I2C_Receive_N_Bytes(char* data, byte n)   // i'm not sure about byte value 
     {
       clearInteruptFlag();
       
-      if((n-1)==1)
+      if((n-1)==1) // if it's the last byte to read
         setRegBit(IICC1, TXAK);  // No acknowledge signal response is sent
         
       *data = getReg(IICD);

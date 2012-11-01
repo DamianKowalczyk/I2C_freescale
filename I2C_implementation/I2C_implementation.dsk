@@ -9,9 +9,24 @@ StartupPrj=E:\disseration\project\I2C\I2C_implementation\I2C_implementation.pe
 [CpuExpert]
 
 [AppPanel]
-Status=hiden
+Status=Visible
 WindowState=NORMAL
-Rect=[-36|58|318|530]
+Rect=[0|153|347|494]
+AllFocusedNode=BMP085.c:user
+ConfigurationsInAllExpanded=Yes
+CPUsInAllExpanded=Yes
+FPGAsInAllExpanded=No
+OperatingSystemInAllExpanded=Yes
+BeansInAllExpanded=Yes
+TasksInAllExpanded=No
+ProgramsInAllExpanded=Yes
+Gen_ProgramsInAllExpanded=No
+Gen_BeanModulesInAllExpanded=No
+ExternModulesInAllExpanded=No
+DocumentationInAllExpanded=No
+PESLInAllExpanded=No
+PESL_moduleInAllExpanded=No
+ViewEnabledItemsOnly=No
 
 [CpuPanel]
 Status=hiden
@@ -91,7 +106,7 @@ FindScope=FROM_CURSOR
 FindHistory=0
 ReplaceHistory=0
 OpenFilesCount=0
-SelFile=E:\disseration\project\I2C\I2C_implementation\CODE\BMP085.c
+SelFile=
 SelLine=-1
 FileHistory=0
 
