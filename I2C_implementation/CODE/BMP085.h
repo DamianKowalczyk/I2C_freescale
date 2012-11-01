@@ -27,7 +27,7 @@
 
 /** this structure holds all device specific calibration parameters 
 */
-typedef struct  
+struct bmp085_calibration_parameters 
 {   
    short ac1;
    short ac2;
@@ -40,24 +40,17 @@ typedef struct
    short mb;
    short mc;
    short md;      		   
-} bmp085_calibration_parameters; 
+}; 
 
 /** BMP085 image registers data structure
   // probably some of this fields are not neccessary if not delete it after tests
 */
-typedef struct bmp085 {	
-  bmp085_calibration_parameters cal_param;	
-	unsigned char mode;
-	unsigned char chip_id,	ml_version,	al_version;
-	unsigned char dev_addr;	
-	unsigned char sensortype;
-
+struct bmp085_str 
+{	
+  struct bmp085_calibration_parameters cal_param;		
 	long param_b5;
-	int number_of_samples;
 	short oversampling_setting;
-	short smd500_t_resolution, smd500_masterclock;
-
-} bmp085_struct;
+};
 
 
 /* END BMP085 */
