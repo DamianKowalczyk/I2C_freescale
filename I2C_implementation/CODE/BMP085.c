@@ -144,7 +144,7 @@ short calculate_temperature(unsigned long ut)
   \param ut parameter ut read from device
   \return pressure in steps of 1.0 Pa
 */
-long convert_pressure(unsigned long up)
+long calculate_pressure(unsigned long up)
 {
    long pressure,x1,x2,x3,b3,b6;
    unsigned long b4, b7;
