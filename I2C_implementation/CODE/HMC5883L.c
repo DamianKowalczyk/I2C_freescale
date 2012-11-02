@@ -66,7 +66,9 @@ void setSingleMeasurement()
   I2C_SendStop();  
 }
 
-/** starts single measurement and get results */
+/** starts single measurement and get results 
+    max value is 2047 and min value is -2048, in case of overflow or underflow for the given channel the value -4096 is into registry
+*/
 void getValuesFromSingleMeasurement(short* values)
 {
   int i, j;
