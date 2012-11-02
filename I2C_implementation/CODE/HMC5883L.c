@@ -20,7 +20,9 @@
 */ 
 void init()
 {   
-  setContinuousMeasurementMode();  // measure magnetic field 15 times per second - default value    
+  setContinuousMeasurementMode();  // measure magnetic field 15 times per second - default value 
+                                    // this mode is more difficult than single mode because we have to measure time between two's reading from registry
+                                    // to get correct values   
 }
 
 /** this function gets all measurement from device
