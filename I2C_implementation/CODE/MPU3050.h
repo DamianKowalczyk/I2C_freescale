@@ -15,7 +15,7 @@
 /* MODULE MPU3050 */
 
 #define MPU3050_WR_ADDR  0x68  // didnt know if this values are correct
-#define MPU3060_RD_ADDR  0x69// necessary to check the connection on the board
+#define MPU3050_RD_ADDR  0x69// necessary to check the connection on the board
 
 
 

@@ -48,7 +48,7 @@ void I2C_SendStop()
   clrRegBit(IICC1, MST); // stop signal: mst 1->0
 } 
 
-void I2C_SendRestart()   // i didnt check this function yet
+void I2C_SendRepeatStart()   // i didnt check this function yet
 {
   clearInteruptFlag();
   setTransmitMode();
@@ -127,7 +127,7 @@ byte I2C_ReceiveByte_No_Ack(char* data)
   return OK; 
 }
 
-byte I2C_Receive_N_Bytes(char* data, byte n)   // i'm not sure about byte value - how exacly it is interpreted
+byte I2C_Receive_N_Bytes(byte* data, byte n)   // i'm not sure about byte value - how exacly it is interpreted
 {
   int delay = del;
   

@@ -50,7 +50,7 @@ void BMP085_get_calibration_coefficients()
   
     
   for(i=0, j=0; i<BMP085_NUMBER_OF_CAL_PARAMETERS; i++, j+=2)
-    data[i] = BMP085readData(BMP085_PROM_START_ADDR+j);
+    data[i] = BMP085_readData(BMP085_PROM_START_ADDR+j);
   
   /*parameters AC1-AC6*/  
   bmp085.cal_param.ac1 = data[0];
@@ -196,7 +196,7 @@ unsigned short BMP085_readData(byte registry_address)
   I2C_SendStart();
   I2C_SendByte_Ack(BMP085_I2C_WR_ADDR);
   I2C_SendByte_Ack(registry_address);
-  I2C_SendRestart();
+  I2C_SendRepeatStart();
   I2C_SendByte_Ack(BMP085_I2C_RD_ADDR);
   I2C_Receive_N_Bytes(data, 2);
   I2C_SendStop();

@@ -11,7 +11,7 @@ StartupPrj=E:\disseration\project\I2C\I2C_implementation\I2C_implementation.pe
 [AppPanel]
 Status=hiden
 WindowState=NORMAL
-Rect=[4|50|318|530]
+Rect=[-4|58|318|530]
 
 [CpuPanel]
 Status=hiden
@@ -21,7 +21,7 @@ CpuPanViewMode=Default
 ViewSizeIndex=1
 
 [ErrorPanel]
-Status=Visible
+Status=hiden
 WindowState=NORMAL
 Rect=[341|549|500|170]
 
