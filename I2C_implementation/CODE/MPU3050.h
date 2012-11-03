@@ -13,11 +13,16 @@
 #define __MPU3050_H
 
 /* MODULE MPU3050 */
+#include "PE_Types.h"
 
 #define MPU3050_WR_ADDR  0x68  // didnt know if this values are correct
 #define MPU3050_RD_ADDR  0x69// necessary to check the connection on the board
 
-
+struct MPU3050_str 
+{
+  byte range;
+  byte filter_bandwith;  
+}
 
 /* END MPU3050 */
 

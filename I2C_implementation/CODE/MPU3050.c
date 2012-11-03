@@ -13,7 +13,12 @@
 #include "MPU3050.h"
 #include "PE_Types.h"
 
-void MPU3050_init(){
+struct MPU3050_str mpu3050;
+
+void MPU3050_init()
+{
+  mpu3050.range = 0;
+  mpu3050.filter_bandwidth = 0;  
 }
 
 void MPU3050_setRegistry_data(char reg_addr, char value)
@@ -127,8 +132,39 @@ void MPU3050_setBiasOffset(short x, short y, short z){  // 2's complementary
   
 }
 
-void MPU3050_setBandwith(){
+/**
+DLPF_CFG  Low Pass Filter Bandwidth  Analog Sample Rate 
+0           256Hz                           8kHz 
+1           188Hz                           1kHz 
+2           98Hz                            1kHz 
+3           42Hz                            1kHz 
+4           20Hz                            1kHz 
+5           10Hz                            1kHz 
+6           5Hz                             1kHz 
+*/
+void MPU3050_setBandwith(byte value)
+{
+  mpu3050.filter_bandwidth = value;
+  
+  value = (mpu3050.range << 3) | mpu3050.filter_bandwidth;
+  
+  MPU3050_setRegistry_data(0x16, value);    
 }
+
+/**
+0  ±250°/sec 
+1  ±500°/sec 
+2  ±1000°/sec 
+3  ±2000°/sec */
+void MPU3050_setRange(byte value)
+{ 
+  mpu3050.range = value;
+  
+  value = (mpu3050.range << 3) | mpu3050.filter_bandwidth;
+  
+  MPU3050_setRegistry_data(0x16, value);   
+}
+
 
 
 
