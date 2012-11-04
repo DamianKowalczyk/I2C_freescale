@@ -27,8 +27,8 @@ bool BMA020_init()
   bma020.accelerationMeasurementRange = 0; // default values after
   bma020.filterBandwidth = 0;       // power on are 0
   bma020.coefficient = RANGE_COEF_2G;
-  bma020.divider = RANGE_COEF_4G;  
-  bma020.base_value =RANGE_COEF_8G;
+  bma020.divider = RANGE_DIVIDER_2G;  
+  bma020.base_value = RANGE_BASE_2G;
   
   return BMA020_checkSensor(); 
 }
