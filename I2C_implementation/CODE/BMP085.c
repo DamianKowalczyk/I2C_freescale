@@ -25,13 +25,16 @@ struct bmp085_str bmp085;
 void BMP085_init(){
   bmp085.oversampling_setting = 0;  //valid only for ultra low power mode
   
-  get_calibration_coefficients();
+  BMP085_get_calibration_coefficients();
 }
 
 void BMP085_get_calibration_coefficients() 
 {
   short data[BMP085_NUMBER_OF_CAL_PARAMETERS];    
   int i, j;
+  
+  for (i=0;i<BMP085_NUMBER_OF_CAL_PARAMETERS; i++)
+    data[i] = 0;
   
 // for sure write 0 to all places into this memory
   // delete this lines after tests
@@ -83,7 +86,7 @@ unsigned long BMP085_get_temperature()
   I2C_SendByte_Ack(0x2E);
   I2C_SendStop();
   
-  // wait 4.5 ms
+  // wait 4.5 ms  
   for (i=0;i<5;i++)
     for (j=0; j<16000; j++)
       ;  
@@ -199,7 +202,7 @@ unsigned short BMP085_readData(byte registry_address)
   I2C_SendRepeatStart();
   I2C_SendByte_Ack(BMP085_I2C_RD_ADDR);
   I2C_Receive_N_Bytes(data, 2);
-  I2C_SendStop();
+  //I2C_SendStop();
   
   return data[0]<<8 | data[1];      
 }
@@ -209,5 +212,7 @@ void BMP085_change_pressure_mode() //additional
   // attention if we want to change mode we should set the oversampling member to correct value
 
 }
+
+
 
 /* END BMP085 */

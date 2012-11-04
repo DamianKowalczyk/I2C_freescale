@@ -43,7 +43,12 @@ void main(void)
   byte j;
   char results[] = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}; 
   char dataFromExpander[] = {0,0,0,0,0,0,0,0,0,0};      
-  int dataFromTerm[] = {0,0,0,0,0,0,0,0,0,0};   
+  int dataFromTerm[] = {0,0,0,0,0,0,0,0,0,0}; 
+  short BMP085_temper[] = {0,0,0,0,0,0,0,0,0,0};
+  short BMP085_pressure[] = {0,0,0,0,0,0,0,0,0,0};   
+  unsigned long tmp;
+  int connectionProblemdataFromTerm[] = {0,0,0,0,0,0,0,0,0,0};
+    
   
   /* Write your local variable definition here */
 
@@ -79,13 +84,37 @@ void main(void)
     wait();    
   }
   */
-     
+  /*   
   for (j=0;j<10;j++)
   {    
     checkTemperature(&dataFromTerm[j]);
     wait();    
-  }   
-
+  } 
+  */
+  
+  results[0] = readTemperatureAfterSetingPointer(connectionProblemdataFromTerm[j]);
+  wait();
+  results[1] = readTemperatureAfterSetingPointer(connectionProblemdataFromTerm[j]);
+  wait(); 
+  
+  for (j=0;j<10;j++)
+  {    
+    results[j] = readTemperatureAfterSetingPointer(&connectionProblemdataFromTerm[j]);
+    wait();    
+  } 
+    
+  /*
+  // BMP085 check temperature
+  BMP085_init();   
+  
+  
+  for (j=0;j<10;j++)
+  {  
+    tmp = BMP085_get_temperature();
+    BMP085_temper[j] = BMP085_calculate_temperature(tmp);  
+  }
+  *\
+  
   /*** Don't write any code pass this line, or it will be deleted during code generation. ***/
   /*** Processor Expert end of main routine. DON'T MODIFY THIS CODE!!! ***/
   for(;;){}

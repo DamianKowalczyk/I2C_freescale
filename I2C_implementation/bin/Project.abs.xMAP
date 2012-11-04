@@ -32,26 +32,26 @@
   00000802 000000A0 .text   PE_low_level_init	(Cpu.c)
   000008A2 00000002 .text   I2C_interrupt_handler	(Events.c)
   000008A4 00000034 .text   wait	(I2C_implementation.c)
-  000008D8 00000056 .text   main	(I2C_implementation.c)
-  0000092E 0000002C .text   IIC2_Init	(IIC2.c)
-  0000095A 00000028 .text   I2C_SendStart	(I2C_functions.c)
-  00000982 00000028 .text   I2C_SendStop	(I2C_functions.c)
-  000009AA 00000078 .text   I2C_SendByte_Ack	(I2C_functions.c)
-  00000A22 00000164 .text   I2C_Receive_N_Bytes	(I2C_functions.c)
-  00000B86 0000000E .text   clearInteruptFlag	(I2C_functions.c)
-  00000B94 0000000E .text   setTransmitMode	(I2C_functions.c)
-  00000BA2 0000000E .text   setReceiveMode	(I2C_functions.c)
-  00000BB0 0000000E .text   sendByteOfData	(I2C_functions.c)
-  00000BBE 0000006E .text   getTemperature	(FM75_comunication.c)
-  00000C2C 00000042 .text   checkTemperature	(FM75_comunication.c)
-  00000C6E 0000001C .text   __call_static_initializers	(librt.a cf_staticinitia)
-  00000C8A 0000002C .text   __destroy_global_chain	(librt.a cf_staticinitia)
-  00000CB6 0000003E .text   __ldivu__	(librt.a cf_runtime.o   )
-  00000CF4 00000034 .text   __ldiv__	(librt.a cf_runtime.o   )
-  00000D28 0000000C .text   _ewl_exit	(librt.a abort_exit.o   )
-  00000D34 00000018 .text   __clear	(librt.a cpluslib.o     )
-#>00000D4C          ___ROM_AT (linker command file)
-#>00000D4C          ___DATA_ROM (linker command file)
+  000008D8 000000D0 .text   main	(I2C_implementation.c)
+  000009A8 0000002C .text   IIC2_Init	(IIC2.c)
+  000009D4 00000028 .text   I2C_SendStart	(I2C_functions.c)
+  000009FC 00000028 .text   I2C_SendStop	(I2C_functions.c)
+  00000A24 00000016 .text   I2C_SendRepeatStart	(I2C_functions.c)
+  00000A3A 00000078 .text   I2C_SendByte_Ack	(I2C_functions.c)
+  00000AB2 00000132 .text   I2C_Receive_N_Bytes	(I2C_functions.c)
+  00000BE4 0000000E .text   clearInteruptFlag	(I2C_functions.c)
+  00000BF2 0000000E .text   setTransmitMode	(I2C_functions.c)
+  00000C00 0000000E .text   setReceiveMode	(I2C_functions.c)
+  00000C0E 0000000E .text   sendByteOfData	(I2C_functions.c)
+  00000C1C 000000DE .text   readTemperatureAfterSetingPointer	(FM75_comunication.c)
+  00000CFA 0000001C .text   __call_static_initializers	(librt.a cf_staticinitia)
+  00000D16 0000002C .text   __destroy_global_chain	(librt.a cf_staticinitia)
+  00000D42 0000003E .text   __ldivu__	(librt.a cf_runtime.o   )
+  00000D80 00000034 .text   __ldiv__	(librt.a cf_runtime.o   )
+  00000DB4 0000000C .text   _ewl_exit	(librt.a abort_exit.o   )
+  00000DC0 00000018 .text   __clear	(librt.a cpluslib.o     )
+#>00000DD8          ___ROM_AT (linker command file)
+#>00000DD8          ___DATA_ROM (linker command file)
 
 # .data
 #>00800000          ___DATA_RAM (linker command file)
@@ -88,10 +88,10 @@
 #>00000010          ___stack_safety (linker command file)
 #>00800814          __SP_INIT (linker command file)
 #>00800814          ___SP_AFTER_RESET (linker command file)
-#>00000D5C          _romp_at (linker command file)
+#>00000DE8          _romp_at (linker command file)
 
 # .romp
-#>00000D5C          __S_romp (linker command file)
+#>00000DE8          __S_romp (linker command file)
 
 
 # Memory map:
@@ -100,12 +100,12 @@
   0000040D 0000040D 00000001 .abs_NVPROT_INIT abs_NVPROT_INIT
   0000040F 0000040F 00000001 .abs_NVOPT_INIT abs_NVOPT_INIT
   00000410 00000410 00000000 .code      code
-  00000410 00000410 0000093C .text      code
+  00000410 00000410 000009C8 .text      code
   00800000 00800000 00000000 .userram   userram
-  00800000 00000D4C 00000010 .data      userram
+  00800000 00000DD8 00000010 .data      userram
   00800010 00800010 00000004 .bss       userram
   00800014 00800014 00000000 .custom    userram
-  00800014 00000D5C 00000018 .romp      userram
+  00800014 00000DE8 00000018 .romp      userram
 
-# Link start time: Sat Nov 03 20:24:18 2012
-# Link end time: Sat Nov 03 20:24:18 2012
+# Link start time: Sun Nov 04 19:20:39 2012
+# Link end time: Sun Nov 04 19:20:39 2012

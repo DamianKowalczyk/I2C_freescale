@@ -21,8 +21,8 @@
 struct MPU3050_str 
 {
   byte range;
-  byte filter_bandwith;  
-}
+  byte filter_bandwidth;  
+};
 
 /* END MPU3050 */
 

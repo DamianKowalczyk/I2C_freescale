@@ -187,12 +187,14 @@ byte I2C_Receive_N_Bytes(byte* data, byte n)   // i'm not sure about byte value 
   
   *data = getReg(IICD);
   
+  /*
   delay = del;
-  while(getRegBit(IICS, IICIF) == 0 && delay != 0)  // wait for copletly sent byte
+  while(getRegBit(IICS, IICIF) == 0 && delay != 0)  // wait for copletly receiving byte
     delay--;
     
   if (delay==0)  // if the byte was not correct sent
     return TRANSMISSION_FAILD;
+  */
   
   return OK;    
 }                                            
