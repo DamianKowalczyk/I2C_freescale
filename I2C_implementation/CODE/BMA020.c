@@ -26,9 +26,7 @@ bool BMA020_init()
   bma020.reservedBitsFromRegistry_0x14 = BMA020_readRegistry(0x14) & 11100000;
   bma020.accelerationMeasurementRange = 0; // default values after
   bma020.filterBandwidth = 0;       // power on are 0
-  bma020.coefficient = RANGE_COEF_2G;
-  bma020.divider = RANGE_DIVIDER_2G;  
-  bma020.base_value = RANGE_BASE_2G;
+  bma020.coefficient = COEF_RANGE_2G; 
   
   return BMA020_checkSensor(); 
 }
@@ -46,34 +44,35 @@ void BMA020_readAccelerationValues(char* bytes_val)
   I2C_SendStop(); 
 }
 
-void BMA020_convertAccelerationValues(char* bytes_val, short* acceler_val)
+void BMA020_convertAccelerationValues(unsigned char* bytes_val, short* acceler_val)
 {
-  byte i, j;
-  unsigned long int tmp_result;
-  unsigned short tmp_val_lsb;
-  unsigned short tmp_val_msb;
-  unsigned short sign;
-  
-  for (i=0, j=0; i<6; i++, j+=2)
+  char i, j;
+  unsigned long int tmp_result = 0;
+  unsigned short tmp_val_lsb = 0;
+  unsigned short tmp_val_msb = 0;
+  unsigned short sign = 0;
+
+  for (i=0, j=0; i<3; i++, j+=2)
   {
-    tmp_val_lsb = (*(bytes_val + j)) >> 6;    
+    tmp_val_lsb = *(bytes_val + j) >> 6;
     tmp_val_msb = *(bytes_val + j +1) & 0b01111111;
     tmp_val_msb <<= 2;
     sign = *(bytes_val + j +1) & 0b10000000;
-    
+
     tmp_result = tmp_val_lsb | tmp_val_msb;
-    tmp_result = (tmp_result * bma020.coefficient)/ bma020.divider; 
-    
+    tmp_result = (tmp_result * bma020.coefficient)/ 1000;
+
     if (sign) //if the negative number
     {
-      *(acceler_val+i) = bma020.base_value + (short) tmp_result;    
-    } 
-    else 
-    {
-      *(acceler_val+i) = (short) tmp_result;    
+      *(acceler_val+i) = (-1) * (short) tmp_result; // change sign of this number make it negatibe
     }
-  }   
+    else
+    {
+      *(acceler_val+i) = (short) tmp_result;
+    }
+  }
 }
+
   
 
 // im not sure if this function will work ????
@@ -123,6 +122,8 @@ void BMA020_setRegistry(byte reg_addr, byte value)
 void BMA020_setRangeAndBandwidth(byte val_ran)
 {
   bma020.accelerationMeasurementRange = val_ran;
+  
+  // I HAVE TO MODIFY THIS FUNCTION TO UPDATE SOME VALUES INTO bma020 structure
   
   val_ran = val_ran<<3 | bma020.filterBandwidth;
   

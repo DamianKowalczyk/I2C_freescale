@@ -16,17 +16,19 @@
 #define BMA020_WR_ADDR           0x70      
 #define BMA020_RD_ADDR           0x71 
 
-#define RANGE_COEF_2G            3906
-#define RANGE_COEF_4G            7812
-#define RANGE_COEF_8G           15625
+#define COEF_RANGE_2G            3906
+#define COEF_RANGE_4G            7812
+#define COEF_RANGE_8G           15625
 
-#define RANGE_DIVIDER_2G         1000
-#define RANGE_DIVIDER_4G         1000
-#define RANGE_DIVIDER_8G        10000
+/*
+#define DIVIDER_RANGE_2G         1000
+#define DIVIDER_RANGE_4G         1000
+#define DIVIDER_RANGE_8G         1000
 
-#define RANGE_BASE_2G           -2000
-#define RANGE_BASE_4G           -4000
-#define RANGE_BASE_8G           -8000
+#define BASE_RANGE_2G           -2000
+#define BASE_RANGE_4G           -4000
+#define BASE_RANGE_8G           -8000
+*/
 
 struct bma020_str 
 {
@@ -35,8 +37,6 @@ struct bma020_str
   char filterBandwidth;
   
   unsigned long int coefficient;
-  unsigned long int divider;
-  short base_value;
 };
 
 
