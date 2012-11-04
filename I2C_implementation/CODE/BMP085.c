@@ -15,20 +15,20 @@
 #include "BMP085.h"
 #include "I2C_functions.h"
 
-unsigned short BMP085readData(byte registry_address);
-void get_calibration_coefficients();
+unsigned short BMP085_readData(byte registry_address);
+void BMP085_get_calibration_coefficients();
 
 /** structure to hold all calibration coefficients and other neccesary parameters */
 struct bmp085_str bmp085;
   
 /** call this funtion on the start before measure temperature or pressure*/
-void bmp085_init(){
+void BMP085_init(){
   bmp085.oversampling_setting = 0;  //valid only for ultra low power mode
   
   get_calibration_coefficients();
 }
 
-void get_calibration_coefficients() 
+void BMP085_get_calibration_coefficients() 
 {
   short data[BMP085_NUMBER_OF_CAL_PARAMETERS];    
   int i, j;
@@ -72,7 +72,7 @@ void get_calibration_coefficients()
 }
 
 /* after test i should change the way of measure waiting time */
-unsigned long get_temperature() 
+unsigned long BMP085_get_temperature() 
 { 
   unsigned long temperature = 0;
   int i, j; 
@@ -88,13 +88,13 @@ unsigned long get_temperature()
     for (j=0; j<16000; j++)
       ;  
   
-  temperature = BMP085readData(0xF6); 
+  temperature = BMP085_readData(0xF6); 
   
   return temperature; 
 }
 
 /* after test i should change the way of measure waiting time and maybe it will be neccesary to implement some case to use different modes*/ 
-unsigned long get_pressure() 
+unsigned long BMP085_get_pressure() 
 {
   unsigned long pressure = 0;   
   int i, j; 
@@ -114,7 +114,7 @@ unsigned long get_pressure()
   
   
   // if we will use different mode we should make some changes in code below
-  pressure = BMP085readData(0xF6); 
+  pressure = BMP085_readData(0xF6); 
   
   return pressure; 
 }   
@@ -124,7 +124,7 @@ unsigned long get_pressure()
   \param ut parameter ut read from device
   \return temperature in steps of 0.1 deg celsius
 */
-short calculate_temperature(unsigned long ut)
+short BMP085_calculate_temperature(unsigned long ut)
 {
   short temperature =0;
   long x1,x2;
@@ -144,7 +144,7 @@ short calculate_temperature(unsigned long ut)
   \param ut parameter ut read from device
   \return pressure in steps of 1.0 Pa
 */
-long calculate_pressure(unsigned long up)
+long BMP085_calculate_pressure(unsigned long up)
 {
    long pressure,x1,x2,x3,b3,b6;
    unsigned long b4, b7;
@@ -188,7 +188,7 @@ long calculate_pressure(unsigned long up)
 }
 
 /** function for reading coefficients, temperature and pressure from registers*/
-unsigned short BMP085readData(byte registry_address) 
+unsigned short BMP085_readData(byte registry_address) 
 {
 // after first worked tests i have to check if it will work for byte 
   unsigned short data[] = {0,0};
@@ -204,7 +204,7 @@ unsigned short BMP085readData(byte registry_address)
   return data[0]<<8 | data[1];      
 }
 
-void change_pressure_mode() //additional
+void BMP085_change_pressure_mode() //additional
 {
   // attention if we want to change mode we should set the oversampling member to correct value
 

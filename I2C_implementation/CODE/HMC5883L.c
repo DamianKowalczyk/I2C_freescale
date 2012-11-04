@@ -11,9 +11,11 @@
 
 /* MODULE HMC5883L */
 #include "I2C_functions.h"
+#include "PE_Types.h"
 #include "HMC5883L.h"
 
-
+void setContinuousMeasurementMode();
+void waitForEndingMeasurement();
 
 /** in this function we should set the device into appropriate mode e.g. single measurement or continuous mode
     default the device is set into single measurement mode
@@ -32,7 +34,7 @@ void getMeasuredValues(short* values)
 {   
   I2C_SendStart();
   I2C_SendByte_Ack(HMC5883L_RD_ADDR);
-  I2C_Receive_N_Bytes(val, 6); // im not sure if this function is correct because there wasnt any information in 
+  I2C_Receive_N_Bytes(values, 6); // im not sure if this function is correct because there wasnt any information in 
   // documentatin of after receiving last byte of information i should send ACK or NACK??????
   I2C_SendStop();  
 }
@@ -99,6 +101,8 @@ void setPointerOnHMC5883L(byte reg_addr){
 
 void waitForEndingMeasurement()
 {
+  byte i;
+  int j;
    //probably 6ms - but should use different form of this implementation
   for(i=0;i<6;i++)
     for (j=0; j<16000; j++)
