@@ -1,11 +1,11 @@
 Processor Expert Version 0434
-ProjectModificationStamp=16
+ProjectModificationStamp=18
 
 [Header]
 Name=I2C_implementation
 SavedBy=Damian
-ModificationStamp=16
-Date=2012-10-29
+ModificationStamp=18
+Date=2012-11-04
 Product=Processor Expert version 3.07 for Freescale HC(S)08/RS08/CFV1
 IDE=CW Plug-In IDE
 PEversion=4.34.0.5219
@@ -4844,7 +4844,7 @@ Value0=Yes
 Count=0
 
 [BoolList_ProgConfig]
-Count=6
+Count=8
 ItemId0=1
 Value0=Yes
 ItemId1=2
@@ -4857,6 +4857,10 @@ ItemId4=12
 Value4=Yes
 ItemId5=13
 Value5=Yes
+ItemId6=14
+Value6=Yes
+ItemId7=15
+Value7=Yes
 List=Property
 [ItemState]
 ItemSymbol=Optimizations
@@ -5366,6 +5370,40 @@ List=Property
 ItemSymbol=ProgName
 ReadOnly=No
 Value=BMP085
+[ItemState]
+ItemSymbol=ProgDir
+ReadOnly=No
+Value=CODE\
+ProgEnabled=Yes
+NeedGeneration=No
+GenUserModule=No
+ExtProgramType=Code
+
+[Program]
+ProgType=user
+ProgNumb=14
+List=Property
+[ItemState]
+ItemSymbol=ProgName
+ReadOnly=No
+Value=HMC5883L
+[ItemState]
+ItemSymbol=ProgDir
+ReadOnly=No
+Value=CODE\
+ProgEnabled=Yes
+NeedGeneration=No
+GenUserModule=No
+ExtProgramType=Code
+
+[Program]
+ProgType=user
+ProgNumb=15
+List=Property
+[ItemState]
+ItemSymbol=ProgName
+ReadOnly=No
+Value=BMA020
 [ItemState]
 ItemSymbol=ProgDir
 ReadOnly=No

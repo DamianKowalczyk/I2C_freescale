@@ -123,7 +123,18 @@ void BMA020_setRangeAndBandwidth(byte val_ran)
 {
   bma020.accelerationMeasurementRange = val_ran;
   
-  // I HAVE TO MODIFY THIS FUNCTION TO UPDATE SOME VALUES INTO bma020 structure
+  switch (val_ran) 
+  {
+    case 0:
+      bma020.coefficient = COEF_RANGE_2G;
+      break;
+    case 1:
+      bma020.coefficient = COEF_RANGE_4G;
+      break;
+    case 2:
+      bma020.coefficient = COEF_RANGE_8G;
+      break;
+  }
   
   val_ran = val_ran<<3 | bma020.filterBandwidth;
   
@@ -167,6 +178,8 @@ bool BMA020_checkSensor()
   result >>= 7;
   
   // maybe is possible to write it in different form???
+  // return (result == 1) ? 0 : 1; 
+  
   if (result == 1)
     return 0;
   else 
