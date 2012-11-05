@@ -31,31 +31,27 @@
   00000760 000000A2 .text   __initialize_hardware	(Cpu.c)
   00000802 000000A0 .text   PE_low_level_init	(Cpu.c)
   000008A2 00000002 .text   I2C_interrupt_handler	(Events.c)
-  000008A4 00000094 .text   main	(I2C_implementation.c)
-  00000938 0000002C .text   IIC2_Init	(IIC2.c)
-  00000964 00000028 .text   I2C_SendStart	(I2C_functions.c)
-  0000098C 00000028 .text   I2C_SendStop	(I2C_functions.c)
-  000009B4 00000016 .text   I2C_SendRepeatStart	(I2C_functions.c)
-  000009CA 00000078 .text   I2C_SendByte_Ack	(I2C_functions.c)
-  00000A42 00000132 .text   I2C_Receive_N_Bytes	(I2C_functions.c)
-  00000B74 0000000E .text   clearInteruptFlag	(I2C_functions.c)
-  00000B82 0000000E .text   setTransmitMode	(I2C_functions.c)
-  00000B90 0000000E .text   setReceiveMode	(I2C_functions.c)
-  00000B9E 0000000E .text   sendByteOfData	(I2C_functions.c)
-  00000BAC 0000000C .text   BMP085_init	(BMP085.c)
-  00000BB8 00000118 .text   BMP085_get_calibration_coefficients	(BMP085.c)
-  00000CD0 00000088 .text   BMP085_get_pressure	(BMP085.c)
-  00000D58 000001B6 .text   BMP085_calculate_pressure	(BMP085.c)
-  00000F0E 00000048 .text   BMP085_readData	(BMP085.c)
-  00000F56 00000018 .text   waitForBMP085	(delay.c)
-  00000F6E 00000038 .text   waitForMeassure	(delay.c)
-  00000FA6 0000001C .text   __call_static_initializers	(librt.a cf_staticinitia)
-  00000FC2 0000002C .text   __destroy_global_chain	(librt.a cf_staticinitia)
-  00000FEE 0000003E .text   __ldivu__	(librt.a cf_runtime.o   )
-  0000102C 0000000C .text   _ewl_exit	(librt.a abort_exit.o   )
-  00001038 00000018 .text   __clear	(librt.a cpluslib.o     )
-#>00001050          ___ROM_AT (linker command file)
-#>00001050          ___DATA_ROM (linker command file)
+  000008A4 0000007E .text   main	(I2C_implementation.c)
+  00000922 0000002C .text   IIC2_Init	(IIC2.c)
+  0000094E 00000028 .text   I2C_SendStart	(I2C_functions.c)
+  00000976 00000028 .text   I2C_SendStop	(I2C_functions.c)
+  0000099E 00000078 .text   I2C_SendByte_Ack	(I2C_functions.c)
+  00000A16 00000132 .text   I2C_Receive_N_Bytes	(I2C_functions.c)
+  00000B48 0000000E .text   clearInteruptFlag	(I2C_functions.c)
+  00000B56 0000000E .text   setTransmitMode	(I2C_functions.c)
+  00000B64 0000000E .text   setReceiveMode	(I2C_functions.c)
+  00000B72 0000000E .text   sendByteOfData	(I2C_functions.c)
+  00000B80 00000006 .text   HMC5883L_init	(HMC5883L.c)
+  00000B86 0000001A .text   HMC5883L_getMeasuredValues	(HMC5883L.c)
+  00000BA0 00000028 .text   HMC5883L_setRegistry	(HMC5883L.c)
+  00000BC8 0000000A .text   HMC5883L_setContinuousMeasurementMode	(HMC5883L.c)
+  00000BD2 00000038 .text   waitForMeassure	(delay.c)
+  00000C0A 0000001C .text   __call_static_initializers	(librt.a cf_staticinitia)
+  00000C26 0000002C .text   __destroy_global_chain	(librt.a cf_staticinitia)
+  00000C52 0000000C .text   _ewl_exit	(librt.a abort_exit.o   )
+  00000C5E 00000018 .text   __clear	(librt.a cpluslib.o     )
+#>00000C78          ___ROM_AT (linker command file)
+#>00000C78          ___DATA_ROM (linker command file)
 
 # .data
 #>00800000          ___DATA_RAM (linker command file)
@@ -76,27 +72,26 @@
 # .bss
 #>00800010          ___BSS_START (linker command file)
 #>00800010          __START_SBSS (linker command file)
-  00800010 00000020 .sbss   bmp085	(BMP085.c)
-#>00800030          __END_SBSS (linker command file)
-#>00800030          __START_BSS (linker command file)
-  00800030 00000004 .bss    __global_destructor_chain	(librt.a cf_staticinitia)
-#>00800034          __END_BSS (linker command file)
-#>00800034          ___BSS_END (linker command file)
+#>00800010          __END_SBSS (linker command file)
+#>00800010          __START_BSS (linker command file)
+  00800010 00000004 .bss    __global_destructor_chain	(librt.a cf_staticinitia)
+#>00800014          __END_BSS (linker command file)
+#>00800014          ___BSS_END (linker command file)
 
 # .custom
-#>00800034          ___HEAP_START (linker command file)
-#>00800034          ___heap_addr (linker command file)
-#>00800434          ___HEAP_END (linker command file)
-#>00800434          ___SP_END (linker command file)
-#>00800834          ___SP_INIT (linker command file)
-#>00800434          ___mem_limit (linker command file)
+#>00800014          ___HEAP_START (linker command file)
+#>00800014          ___heap_addr (linker command file)
+#>00800414          ___HEAP_END (linker command file)
+#>00800414          ___SP_END (linker command file)
+#>00800814          ___SP_INIT (linker command file)
+#>00800414          ___mem_limit (linker command file)
 #>00000010          ___stack_safety (linker command file)
-#>00800834          __SP_INIT (linker command file)
-#>00800834          ___SP_AFTER_RESET (linker command file)
-#>00001060          _romp_at (linker command file)
+#>00800814          __SP_INIT (linker command file)
+#>00800814          ___SP_AFTER_RESET (linker command file)
+#>00000C88          _romp_at (linker command file)
 
 # .romp
-#>00001060          __S_romp (linker command file)
+#>00000C88          __S_romp (linker command file)
 
 
 # Memory map:
@@ -105,12 +100,12 @@
   0000040D 0000040D 00000001 .abs_NVPROT_INIT abs_NVPROT_INIT
   0000040F 0000040F 00000001 .abs_NVOPT_INIT abs_NVOPT_INIT
   00000410 00000410 00000000 .code      code
-  00000410 00000410 00000C40 .text      code
+  00000410 00000410 00000868 .text      code
   00800000 00800000 00000000 .userram   userram
-  00800000 00001050 00000010 .data      userram
-  00800010 00800010 00000024 .bss       userram
-  00800034 00800034 00000000 .custom    userram
-  00800034 00001060 00000018 .romp      userram
+  00800000 00000C78 00000010 .data      userram
+  00800010 00800010 00000004 .bss       userram
+  00800014 00800014 00000000 .custom    userram
+  00800014 00000C88 00000018 .romp      userram
 
-# Link start time: Mon Nov 05 00:43:12 2012
-# Link end time: Mon Nov 05 00:43:13 2012
+# Link start time: Mon Nov 05 01:32:23 2012
+# Link end time: Mon Nov 05 01:32:23 2012

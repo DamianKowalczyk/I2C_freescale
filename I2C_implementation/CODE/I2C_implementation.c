@@ -48,6 +48,7 @@ void main(void)
   long BMP085_pressure[] = {0,0,0,0,0,0,0,0,0,0};   
   unsigned long tmp;
   int connectionProblemdataFromTerm[] = {0,0,0,0,0,0,0,0,0,0};
+  short HMC5883L_magnetic[10][3];
     
   
   /* Write your local variable definition here */
@@ -117,6 +118,7 @@ void main(void)
   }
   */
   
+  /*
     // BMP085 check pressure 
   BMP085_init();  
   
@@ -127,7 +129,15 @@ void main(void)
     BMP085_pressure[j] = BMP085_calculate_pressure(tmp);
     waitForMeassure();  
   }
+  */
   
+    // HMC5883L
+  HMC5883L_init();
+  for (j=0;j<10;j++)
+  {  
+    HMC5883L_getMeasuredValues(&HMC5883L_magnetic[i][0]);
+    waitForMeassure();  
+  }
   
   /*** Don't write any code pass this line, or it will be deleted during code generation. ***/
   /*** Processor Expert end of main routine. DON'T MODIFY THIS CODE!!! ***/

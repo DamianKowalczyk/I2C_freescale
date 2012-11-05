@@ -14,15 +14,15 @@
 #include "PE_Types.h"
 #include "HMC5883L.h"
 
-void setContinuousMeasurementMode();
+void HMC5883L_setContinuousMeasurementMode();
 void waitForEndingMeasurement();
 
 /** in this function we should set the device into appropriate mode e.g. single measurement or continuous mode
     default the device is set into single measurement mode
 */ 
-void init()
+void HMC5883L_init()
 {   
-  setContinuousMeasurementMode();  // measure magnetic field 15 times per second - default value 
+  HMC5883L_setContinuousMeasurementMode();  // measure magnetic field 15 times per second - default value 
                                     // this mode is more difficult than single mode because we have to measure time between two's reading from registry
                                     // to get correct values   
 }
@@ -30,17 +30,17 @@ void init()
 /** this function gets all measurement from device
     but only after setting 0x02 registry (the pointer will be increased) or after correct getting all values
 */
-void getMeasuredValues(short* values)
+void HMC5883L_getMeasuredValues(short* values)
 {   
   I2C_SendStart();
   I2C_SendByte_Ack(HMC5883L_RD_ADDR);
   I2C_Receive_N_Bytes(values, 6); // im not sure if this function is correct because there wasnt any information in 
   // documentatin of after receiving last byte of information i should send ACK or NACK??????
-  I2C_SendStop();  
+  //I2C_SendStop();  
 }
 
 /** set appropriate value into  */
-void setRegistry(byte registry_address, byte value)
+void HMC5883L_setRegistry(byte registry_address, byte value)
 {
   I2C_SendStart();
   I2C_SendByte_Ack(HMC5883L_WR_ADDR);
@@ -49,9 +49,9 @@ void setRegistry(byte registry_address, byte value)
   I2C_SendStop();
 }
 
-void setContinuousMeasurementMode()
+void HMC5883L_setContinuousMeasurementMode()
 { 
-  setRegistry(HMC5883L_MODE_REGISTER, 0x00); 
+  HMC5883L_setRegistry(HMC5883L_MODE_REGISTER, 0x00); 
  /* I2C_SendStart();
   I2C_SendByte_Ack(HMC5883L_WR_ADDR);
   I2C_SendByte_Ack(HMC5883L_MODE_REGISTER);    
@@ -61,7 +61,7 @@ void setContinuousMeasurementMode()
 
 /** probably this function starts measurement, it wasn't clearly described in documentation
 */
-void setSingleMeasurement()
+void HMC5883L_setSingleMeasurement()
 {
   I2C_SendStart();
   I2C_SendByte_Ack(HMC5883L_WR_ADDR);
@@ -73,26 +73,26 @@ void setSingleMeasurement()
 /** starts single measurement and get results 
     max value is 2047 and min value is -2048, in case of overflow or underflow for the given channel the value -4096 is into registry
 */
-void getValuesFromSingleMeasurement(short* values)
+void HMC5883L_getValuesFromSingleMeasurement(short* values)
 {
-  int i, j;
+  //int i, j;
   
-  setContinuousMeasurementMode();
+  HMC5883L_setContinuousMeasurementMode();
   
   waitForEndingMeasurement();
  
-  getMeasuredValues(values);   
+  HMC5883L_getMeasuredValues(values);   
 }
 
-void generateSelfTest(){
-
-}
-
-void convertValues(){
+void HMC5883L_generateSelfTest(){
 
 }
 
-void setPointerOnHMC5883L(byte reg_addr){
+void HMC5883L_convertValues(){
+
+}
+
+void HMC5883L_setPointerOnHMC5883L(byte reg_addr){
   I2C_SendStart();
   I2C_SendByte_Ack(HMC5883L_WR_ADDR);
   I2C_SendByte_Ack(reg_addr);    
