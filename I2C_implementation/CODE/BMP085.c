@@ -34,7 +34,7 @@ void BMP085_get_calibration_coefficients()
   int i, j;
   
   for (i=0;i<BMP085_NUMBER_OF_CAL_PARAMETERS; i++)
-    data[i] = 0;
+    data[i] = 15;
   
 // for sure write 0 to all places into this memory
   // delete this lines after tests
@@ -52,8 +52,10 @@ void BMP085_get_calibration_coefficients()
 /////////////////////////////////////
   
     
-  for(i=0, j=0; i<BMP085_NUMBER_OF_CAL_PARAMETERS; i++, j+=2)
+  for(i=0, j=0; i<BMP085_NUMBER_OF_CAL_PARAMETERS; i++, j+=2){    
     data[i] = BMP085_readData(BMP085_PROM_START_ADDR+j);
+    waitForBMP085();
+  }
   
   /*parameters AC1-AC6*/  
   bmp085.cal_param.ac1 = data[0];
@@ -86,8 +88,8 @@ unsigned long BMP085_get_temperature()
   I2C_SendByte_Ack(0x2E);
   I2C_SendStop();
   
-  // wait 4.5 ms  
-  for (i=0;i<5;i++)
+  // wait 4.5 ms    // change after tests
+  for (i=0;i<10;i++)
     for (j=0; j<16000; j++)
       ;  
   
@@ -194,7 +196,7 @@ long BMP085_calculate_pressure(unsigned long up)
 unsigned short BMP085_readData(byte registry_address) 
 {
 // after first worked tests i have to check if it will work for byte 
-  unsigned short data[] = {0,0};
+  byte data[] = {0,0};
       
   I2C_SendStart();
   I2C_SendByte_Ack(BMP085_I2C_WR_ADDR);

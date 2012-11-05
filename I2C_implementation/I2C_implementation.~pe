@@ -1,11 +1,11 @@
 Processor Expert Version 0434
-ProjectModificationStamp=20
+ProjectModificationStamp=21
 
 [Header]
 Name=I2C_implementation
 SavedBy=Damian
-ModificationStamp=20
-Date=2012-11-03
+ModificationStamp=21
+Date=2012-11-04
 Product=Processor Expert version 3.07 for Freescale HC(S)08/RS08/CFV1
 IDE=CW Plug-In IDE
 PEversion=4.34.0.5219
@@ -4844,7 +4844,7 @@ Value0=Yes
 Count=0
 
 [BoolList_ProgConfig]
-Count=9
+Count=10
 ItemId0=1
 Value0=Yes
 ItemId1=2
@@ -4863,6 +4863,8 @@ ItemId7=15
 Value7=Yes
 ItemId8=16
 Value8=Yes
+ItemId9=17
+Value9=Yes
 List=Property
 [ItemState]
 ItemSymbol=Optimizations
@@ -5423,6 +5425,23 @@ List=Property
 ItemSymbol=ProgName
 ReadOnly=No
 Value=MPU3050
+[ItemState]
+ItemSymbol=ProgDir
+ReadOnly=No
+Value=CODE\
+ProgEnabled=Yes
+NeedGeneration=No
+GenUserModule=No
+ExtProgramType=Code
+
+[Program]
+ProgType=user
+ProgNumb=17
+List=Property
+[ItemState]
+ItemSymbol=ProgName
+ReadOnly=No
+Value=delay
 [ItemState]
 ItemSymbol=ProgDir
 ReadOnly=No

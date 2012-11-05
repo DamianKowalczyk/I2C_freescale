@@ -11,7 +11,7 @@ StartupPrj=E:\disseration\project\I2C\I2C_implementation\I2C_implementation.pe
 [AppPanel]
 Status=hiden
 WindowState=NORMAL
-Rect=[-4|58|318|530]
+Rect=[4|50|318|530]
 
 [CpuPanel]
 Status=hiden
@@ -21,7 +21,7 @@ CpuPanViewMode=Default
 ViewSizeIndex=1
 
 [ErrorPanel]
-Status=hiden
+Status=Visible
 WindowState=NORMAL
 Rect=[341|549|500|170]
 
@@ -91,7 +91,7 @@ FindScope=FROM_CURSOR
 FindHistory=0
 ReplaceHistory=0
 OpenFilesCount=0
-SelFile=E:\disseration\project\I2C\I2C_implementation\CODE\BMP085.c
+SelFile=E:\disseration\project\I2C\I2C_implementation\CODE\BMA020.c
 SelLine=-1
 FileHistory=0
 

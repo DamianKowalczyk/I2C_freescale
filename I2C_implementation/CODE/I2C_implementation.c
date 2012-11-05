@@ -45,7 +45,7 @@ void main(void)
   char dataFromExpander[] = {0,0,0,0,0,0,0,0,0,0};      
   int dataFromTerm[] = {0,0,0,0,0,0,0,0,0,0}; 
   short BMP085_temper[] = {0,0,0,0,0,0,0,0,0,0};
-  short BMP085_pressure[] = {0,0,0,0,0,0,0,0,0,0};   
+  long BMP085_pressure[] = {0,0,0,0,0,0,0,0,0,0};   
   unsigned long tmp;
   int connectionProblemdataFromTerm[] = {0,0,0,0,0,0,0,0,0,0};
     
@@ -92,6 +92,7 @@ void main(void)
   } 
   */
   
+  /*
   results[0] = readTemperatureAfterSetingPointer(connectionProblemdataFromTerm[j]);
   wait();
   results[1] = readTemperatureAfterSetingPointer(connectionProblemdataFromTerm[j]);
@@ -102,18 +103,31 @@ void main(void)
     results[j] = readTemperatureAfterSetingPointer(&connectionProblemdataFromTerm[j]);
     wait();    
   } 
-    
-  /*
-  // BMP085 check temperature
-  BMP085_init();   
   
+  */  
+  
+  /*
+    // BMP085 check temperature     
+  BMP085_init();  
   
   for (j=0;j<10;j++)
   {  
     tmp = BMP085_get_temperature();
-    BMP085_temper[j] = BMP085_calculate_temperature(tmp);  
+    BMP085_temper[j] = BMP085_calculate_temperature(unsigned long ut)(tmp);  
   }
-  *\
+  */
+  
+    // BMP085 check pressure 
+  BMP085_init();  
+  
+  for (j=0;j<10;j++)
+  {  
+    tmp = BMP085_get_pressure();
+    
+    BMP085_pressure[j] = BMP085_calculate_pressure(tmp);
+    waitForMeassure();  
+  }
+  
   
   /*** Don't write any code pass this line, or it will be deleted during code generation. ***/
   /*** Processor Expert end of main routine. DON'T MODIFY THIS CODE!!! ***/
