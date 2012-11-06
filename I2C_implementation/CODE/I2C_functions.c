@@ -32,26 +32,26 @@ void I2C_SendStart()
 { 
   setTransmitMode(); 
   
-  if(getRegBit(IICC1, MST)==1) //maybe i should wait after this change
-    clrRegBit(IICC1, MST);     
+  //if(getRegBit(IICC1, MST)==1) //maybe i should wait after this change
+    //clrRegBit(IICC1, MST);     
   
   setRegBit(IICC1, MST); // start signal: mst 0->1
 }
 
 void I2C_SendStop()
 {       
-  setTransmitMode();
+  //setTransmitMode();
 
-  if(getRegBit(IICC1, MST)==0)
-    setRegBit(IICC1, MST);    
+  //if(getRegBit(IICC1, MST)==0)
+    //setRegBit(IICC1, MST);    
   
   clrRegBit(IICC1, MST); // stop signal: mst 1->0
 } 
 
 void I2C_SendRepeatStart()   // i didnt check this function yet
 {
-  clearInteruptFlag();
-  setTransmitMode();
+  //clearInteruptFlag();
+  //setTransmitMode();
   
   setRegBit(IICC1, RSTA); // repeat start
 }
@@ -61,7 +61,7 @@ byte I2C_SendByte_Ack(char data)
   int delay = del;
       
   clearInteruptFlag();
-  setTransmitMode();
+  //setTransmitMode();
       
   sendByteOfData(data);
   
@@ -87,7 +87,7 @@ byte I2C_SendByte_No_Ack(char data)
   int delay = del;
       
   clearInteruptFlag();
-  setTransmitMode();
+  //setTransmitMode();
      
   sendByteOfData(data);
   
@@ -122,7 +122,7 @@ byte I2C_ReceiveByte_No_Ack(char* data)
   
   *data = getReg(IICD);
   
-  setTransmitMode(); 
+  //setTransmitMode(); 
   
   return OK; 
 }

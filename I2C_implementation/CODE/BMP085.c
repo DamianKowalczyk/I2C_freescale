@@ -32,25 +32,6 @@ void BMP085_get_calibration_coefficients()
 {
   short data[BMP085_NUMBER_OF_CAL_PARAMETERS];    
   int i, j;
-  
-  for (i=0;i<BMP085_NUMBER_OF_CAL_PARAMETERS; i++)
-    data[i] = 15;
-  
-// for sure write 0 to all places into this memory
-  // delete this lines after tests
-  bmp085.cal_param.ac1 = 0;
-  bmp085.cal_param.ac2 = 0;
-  bmp085.cal_param.ac3 = 0;
-  bmp085.cal_param.ac4 = 0;
-  bmp085.cal_param.ac5 = 0;
-  bmp085.cal_param.ac6 = 0;
-  bmp085.cal_param.b1 = 0;
-  bmp085.cal_param.b2 = 0;
-  bmp085.cal_param.mb = 0;
-  bmp085.cal_param.mc = 0;
-  bmp085.cal_param.md = 0;
-/////////////////////////////////////
-  
     
   for(i=0, j=0; i<BMP085_NUMBER_OF_CAL_PARAMETERS; i++, j+=2){    
     data[i] = BMP085_readData(BMP085_PROM_START_ADDR+j);
@@ -113,7 +94,7 @@ unsigned long BMP085_get_pressure()
   
   // wait time proportional to the setting 
     // for now it is only one mode: ultra low power 
-  for (i=0;i<5;i++)
+  for (i=0;i<10;i++)
     for (j=0; j<16000; j++)
       ;  
   
@@ -192,7 +173,7 @@ long BMP085_calculate_pressure(unsigned long up)
    return (pressure);
 }
 
-/** function for reading coefficients, temperature and pressure from registers*/
+/** read coefficients, temperature and pressure from registers */
 unsigned short BMP085_readData(byte registry_address) 
 {
 // after first worked tests i have to check if it will work for byte 
@@ -213,6 +194,17 @@ void BMP085_change_pressure_mode() //additional
 {
   // attention if we want to change mode we should set the oversampling member to correct value
 
+}
+
+void BMP085_getTemperatureAndPressure(short* temperature, long* pressure)
+{
+  unsigned long temp, pres;
+  
+  temp = BMP085_get_temperature();
+  pres = BMP085_get_pressure();
+  
+  *temperature = BMP085_calculate_temperature(temp); 
+  *pressure = BMP085_calculate_pressure(pres);
 }
 
 

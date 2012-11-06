@@ -1,2 +1,3 @@
 Data:2 < ADDXPR ONLY_ADD_IF_NEW ":main:dataFromTerm[5]"
 Data:2 < ADDXPR ONLY_ADD_IF_NEW ":main:dataFromTerm"
+Data:2 < ADDXPR ONLY_ADD_IF_NEW ":main:connectionProblemdataFromTerm[7]"

@@ -478,7 +478,7 @@
       <group name="Interrupts">
         <Interrupt v="Viic1"/>
         <Interrupt_priority v="default"/>
-        <IIC_interrupt v="Enabled"/>
+        <IIC_interrupt v="Disabled"/>
         <ISR_name v="I2C_interrupt_handler"/>
       </group>
       <group name="Initialization">

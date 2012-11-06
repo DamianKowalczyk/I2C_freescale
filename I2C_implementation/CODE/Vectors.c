@@ -5,7 +5,7 @@
 **     Processor : MCF51AC256ACLK
 **     Version   : Component 01.005, Driver 01.08, CPU db: 3.00.053
 **     Compiler  : CodeWarrior ColdFireV1 C Compiler
-**     Date/Time : 2012-10-20, 19:24
+**     Date/Time : 2012-11-06, 15:40
 **     Abstract  :
 **         This bean "MCF51AC256A_80" contains initialization of the
 **         CPU and provides basic methods and events for CPU core
@@ -20,6 +20,7 @@
 ** ###################################################################*/
 #include "Cpu.h"
 #include "IIC2.h"
+#include "leds.h"
 #include "startcf.h"
 
 extern unsigned long far _SP_INIT[];

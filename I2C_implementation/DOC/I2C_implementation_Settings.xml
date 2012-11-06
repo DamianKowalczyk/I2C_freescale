@@ -495,4 +495,67 @@
     </Events>
   </Bean>
 
+  <Bean name="leds" type="BitsIO">
+    <Enabled v="Y"/>
+
+    <Properties>
+      <Component_name v="leds"/>
+      <Port v="PTJ"/>
+      <list name="Pins" v="4">
+        <group name="Pin0">
+          <Pin v="PTJ4_DDATA0"/>
+          <Pin_signal v=""/>
+          <Slew_rate_control_for_PTJ4 v="no"/>
+          <Drive_strength_for_PTJ4 v="High"/>
+        </group>
+        <group name="Pin1">
+          <Pin v="PTJ5_DDATA1"/>
+          <Pin_signal v=""/>
+          <Slew_rate_control_for_PTJ5 v="no"/>
+          <Drive_strength_for_PTJ5 v="High"/>
+        </group>
+        <group name="Pin2">
+          <Pin v="PTJ6_DDATA2"/>
+          <Pin_signal v=""/>
+          <Slew_rate_control_for_PTJ6 v="no"/>
+          <Drive_strength_for_PTJ6 v="High"/>
+        </group>
+        <group name="Pin3">
+          <Pin v="PTJ7_DDATA3"/>
+          <Pin_signal v=""/>
+          <Slew_rate_control_for_PTJ7 v="no"/>
+          <Drive_strength_for_PTJ7 v="High"/>
+        </group>
+      </list>
+      <Pull_resistor sel_value="no pull resistor" v="autoselected pull"/>
+      <Open_drain v="push-pull"/>
+      <Direction v="Output"/>
+      <group name="Initialization">
+        <Init__direction v="Output"/>
+        <Init__value v="0"/>
+      </group>
+      <Safe_mode v="yes"/>
+      <Optimization_for v="speed"/>
+    </Properties>
+
+    <Methods>
+      <GetDir v="generate code"/>
+      <SetDir v="don&apos;t generate code"/>
+      <SetInput v="don&apos;t generate code"/>
+      <SetOutput v="don&apos;t generate code"/>
+      <GetVal v="generate code"/>
+      <PutVal v="generate code"/>
+      <GetBit v="generate code"/>
+      <PutBit v="generate code"/>
+      <SetBit v="generate code"/>
+      <ClrBit v="generate code"/>
+      <NegBit v="generate code"/>
+      <GetRawVal v="don&apos;t generate code"/>
+      <GetRawBit v="don&apos;t generate code"/>
+    </Methods>
+
+    <Events>
+    </Events>
+  </Bean>
+
 </PE_PROJECT_SETTINGS_DOCUMENTATION>

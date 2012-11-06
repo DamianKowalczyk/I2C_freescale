@@ -24,6 +24,7 @@
 #include "PE_Const.h"
 #include "IO_Map.h"
 #include "IIC2.h"
+#include "leds.h"
 
 
 /* END Events */

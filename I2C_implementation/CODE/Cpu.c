@@ -7,7 +7,7 @@
 **     Version   : Component 01.005, Driver 01.08, CPU db: 3.00.053
 **     Datasheet : MCF51AC256RM Rev. 4, 5/2009
 **     Compiler  : CodeWarrior ColdFireV1 C Compiler
-**     Date/Time : 2012-10-17, 16:04
+**     Date/Time : 2012-11-06, 15:40
 **     Abstract  :
 **         This bean "MCF51AC256A_80" contains initialization of the
 **         CPU and provides basic methods and events for CPU core
@@ -26,6 +26,7 @@
 
 /* MODULE Cpu. */
 #include "IIC2.h"
+#include "leds.h"
 #include "PE_Types.h"
 #include "PE_Error.h"
 #include "PE_Const.h"
@@ -164,6 +165,12 @@ void PE_low_level_init(void)
   /* SCGC2: CRC=1,FLS=1,IRQ=1,KBI=1,ACMP=1,RTI=1,SPI2=1,SPI1=1 */
   setReg8(SCGC2, 0xFF);                 
   /* Common initialization of the CPU registers */
+  /* PTJD: PTJD7=0,PTJD6=0,PTJD5=0,PTJD4=0 */
+  clrReg8Bits(PTJD, 0xF0);              
+  /* PTJPE: PTJPE7=0,PTJPE6=0,PTJPE5=0,PTJPE4=0 */
+  clrReg8Bits(PTJPE, 0xF0);             
+  /* PTJDD: PTJDD7=1,PTJDD6=1,PTJDD5=1,PTJDD4=1 */
+  setReg8Bits(PTJDD, 0xF0);             
   /* PTASE: PTASE7=0,PTASE6=0,PTASE5=0,PTASE4=0,PTASE3=0,PTASE2=0,PTASE1=0,PTASE0=0 */
   setReg8(PTASE, 0x00);                 
   /* PTBSE: PTBSE7=0,PTBSE6=0,PTBSE5=0,PTBSE4=0,PTBSE3=0,PTBSE2=0,PTBSE1=0,PTBSE0=0 */
@@ -203,6 +210,7 @@ void PE_low_level_init(void)
   /* ### Shared modules init code ... */
   /* ### Init_IIC "IIC2" init code ... */
   IIC2_Init();
+  /* ### BitsIO "leds" init code ... */
   /* INTC_WCR: ENB=1,??=0,??=0,??=0,??=0,MASK=0 */
   setReg8(INTC_WCR, 0x80);              
   /* Set initial interrupt priority 0 */

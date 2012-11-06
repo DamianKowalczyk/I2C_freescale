@@ -78,7 +78,7 @@ void main(void)
     wait();  
   }
   */
-  /* 
+    /* 
   for (j=0;j<10;j++)
   {    
     results[j] = getTemperature(&dataFromTerm[j]);
@@ -93,31 +93,27 @@ void main(void)
   } 
   */
   
-  /*
-  results[0] = readTemperatureAfterSetingPointer(connectionProblemdataFromTerm[j]);
-  wait();
-  results[1] = readTemperatureAfterSetingPointer(connectionProblemdataFromTerm[j]);
-  wait(); 
-  
+  /* 
   for (j=0;j<10;j++)
   {    
     results[j] = readTemperatureAfterSetingPointer(&connectionProblemdataFromTerm[j]);
     wait();    
   } 
-  
-  */  
-  
-  /*
+  */
+    
+  /*    
     // BMP085 check temperature     
   BMP085_init();  
   
   for (j=0;j<10;j++)
   {  
     tmp = BMP085_get_temperature();
-    BMP085_temper[j] = BMP085_calculate_temperature(unsigned long ut)(tmp);  
+    BMP085_temper[j] = BMP085_calculate_temperature(tmp);  
   }
+    
+  leds_PutVal(15);
   */
-  
+
   /*
     // BMP085 check pressure 
   BMP085_init();  
@@ -129,8 +125,19 @@ void main(void)
     BMP085_pressure[j] = BMP085_calculate_pressure(tmp);
     waitForMeassure();  
   }
+  leds_PutVal(15);
   */
+    // BMP085 check temperature and pressure 
+  BMP085_init();    
+  for (j=0;j<10;j++)
+  {  
+    BMP085_getTemperatureAndPressure(&BMP085_temper[j], &BMP085_pressure[j]);
+    waitForMeassure();  
+  }
+  leds_PutVal(15);
   
+  
+  /*  
     // HMC5883L
   HMC5883L_init();
   for (j=0;j<10;j++)
@@ -138,6 +145,7 @@ void main(void)
     HMC5883L_getMeasuredValues(&HMC5883L_magnetic[i][0]);
     waitForMeassure();  
   }
+  */
   
   /*** Don't write any code pass this line, or it will be deleted during code generation. ***/
   /*** Processor Expert end of main routine. DON'T MODIFY THIS CODE!!! ***/
