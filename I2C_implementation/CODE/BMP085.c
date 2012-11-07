@@ -176,7 +176,6 @@ long BMP085_calculate_pressure(unsigned long up)
 /** read coefficients, temperature and pressure from registers */
 unsigned short BMP085_readData(byte registry_address) 
 {
-// after first worked tests i have to check if it will work for byte 
   byte data[] = {0,0};
       
   I2C_SendStart();

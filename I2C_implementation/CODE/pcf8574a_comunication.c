@@ -47,4 +47,34 @@ byte getSampleDataFromExpander(char* data)
   return 0;   
 }
 
+void expanderBlinkDiodes()
+{
+  byte i, j; 
+  
+  for (j=0, i=0;j<10;j++)
+  {    
+    sendSampleDataToExpander(0b10101010);
+    i++;
+    wait();
+    sendSampleDataToExpander(0b01010101);
+    i++;
+    wait();         
+  }  
+   
+  leds_PutVal(15); 
+   
+}
+
+void expanderGetValues()
+{
+  byte i, j;
+  char dataFromExpander[] = {0,0,0,0,0,0,0,0,0,0};
+  
+  for (j=0;j<10;j++)
+  {    
+    getSampleDataFromExpander(&dataFromExpander[j]);     
+    wait();  
+  }
+}
+
 /* END pcf8574a_comunication */

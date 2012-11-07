@@ -27,14 +27,6 @@
 #include "IO_Map.h"
 
 
-void wait()
-{
-  int a,b;
-  for (a=0; a<100; a++)
-      for (b=0; b<24000; b++)
-        ;    
-}
-
 /* User includes (#include below this line is not maintained by Processor Expert) */
 
 void main(void)
@@ -42,7 +34,7 @@ void main(void)
   byte i = 0;
   byte j;
   char results[] = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}; 
-  char dataFromExpander[] = {0,0,0,0,0,0,0,0,0,0};      
+       
   int dataFromTerm[] = {0,0,0,0,0,0,0,0,0,0}; 
   short BMP085_temper[] = {0,0,0,0,0,0,0,0,0,0};
   long BMP085_pressure[] = {0,0,0,0,0,0,0,0,0,0};   

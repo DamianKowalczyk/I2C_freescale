@@ -33,4 +33,12 @@ void waitForHMC588L(){
       ;    
 }
 
+void wait()
+{
+  int a,b;
+  for (a=0; a<100; a++)
+      for (b=0; b<24000; b++)
+        ;    
+}
+
 /* END delay */
