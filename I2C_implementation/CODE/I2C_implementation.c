@@ -48,7 +48,10 @@ void main(void)
   long BMP085_pressure[] = {0,0,0,0,0,0,0,0,0,0};   
   unsigned long tmp;
   int connectionProblemdataFromTerm[] = {0,0,0,0,0,0,0,0,0,0};
-  short HMC5883L_magnetic[10][3];
+  short HMC5883L_magnetic[30][3];
+  short self_test_values[]= {0,0,0};
+  byte accelerometer_selftest;
+  
     
   
   /* Write your local variable definition here */
@@ -127,25 +130,39 @@ void main(void)
   }
   leds_PutVal(15);
   */
-    // BMP085 check temperature and pressure 
+  /*  // BMP085 check temperature and pressure 
   BMP085_init();    
   for (j=0;j<10;j++)
   {  
     BMP085_getTemperatureAndPressure(&BMP085_temper[j], &BMP085_pressure[j]);
     waitForMeassure();  
   }
-  leds_PutVal(15);
+  leds_PutVal(15);  */   
+   
+  //HMC5883L_generateSelfTest(self_test_values); 
   
-  
-  /*  
-    // HMC5883L
-  HMC5883L_init();
-  for (j=0;j<10;j++)
+  /*for (j=0;j<90;j+=3)
   {  
-    HMC5883L_getMeasuredValues(&HMC5883L_magnetic[i][0]);
-    waitForMeassure();  
-  }
+    HMC5883L_getValues_SingleMeassure(&HMC5883L_magnetic[j]);
+    waitForMeassure(); 
+    waitForMeassure(); 
+  } */
+  /* // get values from magnetrometer
+  for (j=0;j<30;j++)
+  {  
+    HMC5883L_getValues_SingleMeassure(&HMC5883L_magnetic[j][0]);
+    waitForHMC588L();        
+  } 
+  leds_PutVal(15);
   */
+  
+  //accelerometer
+  accelerometer_selftest = BMA020_init();
+  
+  
+    
+  
+    
   
   /*** Don't write any code pass this line, or it will be deleted during code generation. ***/
   /*** Processor Expert end of main routine. DON'T MODIFY THIS CODE!!! ***/

@@ -16,13 +16,17 @@
 
 void HMC5883L_setContinuousMeasurementMode();
 void waitForEndingMeasurement();
+void HMC5883L_setRegistry(byte registry_address, byte value);
 
 /** in this function we should set the device into appropriate mode e.g. single measurement or continuous mode
     default the device is set into single measurement mode
 */ 
 void HMC5883L_init()
-{   
-  HMC5883L_setContinuousMeasurementMode();  // measure magnetic field 15 times per second - default value 
+{ 
+  HMC5883L_setRegistry(0x00, 0x7C); // register A configuration
+  //HMC5883L_setRegistry(0x02, 0x01); //set single meassure mode
+    
+  //HMC5883L_setContinuousMeasurementMode();  // measure magnetic field 15 times per second - default value 
                                     // this mode is more difficult than single mode because we have to measure time between two's reading from registry
                                     // to get correct values   
 }
@@ -84,14 +88,33 @@ void HMC5883L_getValuesFromSingleMeasurement(short* values)
   HMC5883L_getMeasuredValues(values);   
 }
 
-void HMC5883L_generateSelfTest(){
+void HMC5883L_generateSelfTest(short* values)
+{
+  HMC5883L_setRegistry(0x00, 0x7D);
+  HMC5883L_setRegistry(0x02, 0x1);  // probably will generate self test
+  
+  waitForEndingMeasurement();
+  waitForEndingMeasurement();
+  
+  HMC5883L_getMeasuredValues(values);    
+}
 
+void HMC5883L_getValues_SingleMeassure(short* values)
+{
+  HMC5883L_setRegistry(0x02, 0x1);  // probably will generate self test
+  
+  waitForEndingMeasurement();
+  waitForEndingMeasurement();
+  
+  HMC5883L_getMeasuredValues(values);  
 }
 
 void HMC5883L_convertValues(){
 
 }
 
+
+// ??
 void HMC5883L_setPointerOnHMC5883L(byte reg_addr){
   I2C_SendStart();
   I2C_SendByte_Ack(HMC5883L_WR_ADDR);

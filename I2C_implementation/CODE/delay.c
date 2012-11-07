@@ -25,5 +25,12 @@ void waitForMeassure(){
       ;  
 }
 
+void waitForHMC588L(){
+   int j;
+   unsigned char i;
+   for (i=0; i<10; i++)  
+    for (j=0; j<16000; j++)
+      ;    
+}
 
 /* END delay */
