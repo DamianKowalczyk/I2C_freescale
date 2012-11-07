@@ -31,7 +31,7 @@ bool BMA020_init()
   return BMA020_checkSensor(); 
 }
 
-void BMA020_readAccelerationValues(char* bytes_val)
+void BMA020_readAccelerationValues(unsigned char* bytes_val)
 {
   I2C_SendStart();
   I2C_SendByte_Ack(BMA020_WR_ADDR);
@@ -41,7 +41,7 @@ void BMA020_readAccelerationValues(char* bytes_val)
   I2C_SendStart();
   I2C_SendByte_Ack(BMA020_RD_ADDR);
   I2C_Receive_N_Bytes(bytes_val, 6);
-  I2C_SendStop(); 
+  //I2C_SendStop(); 
 }
 
 void BMA020_convertAccelerationValues(unsigned char* bytes_val, short* acceler_val)
@@ -73,7 +73,12 @@ void BMA020_convertAccelerationValues(unsigned char* bytes_val, short* acceler_v
   }
 }
 
-  
+void BMA020_getAcceleration(short* acceler_val) 
+{
+  unsigned char bytesFromAccel[6];
+  BMA020_readAccelerationValues(bytesFromAccel);
+  BMA020_convertAccelerationValues(bytesFromAccel, acceler_val);  
+}
 
 // im not sure if this function will work ????
 byte BMA020_readRegistry(byte reg_addr)
@@ -88,7 +93,7 @@ byte BMA020_readRegistry(byte reg_addr)
   I2C_SendStart();
   I2C_SendByte_Ack(BMA020_RD_ADDR);
   I2C_ReceiveByte_No_Ack(&data);
-  I2C_SendStop(); 
+  //I2C_SendStop(); check it!!! 
   
   return data;       
 }
@@ -186,5 +191,60 @@ bool BMA020_checkSensor()
     return 1;  
 }
 
+
+void checRegistersIntoAccelerometer(byte* bytes_val)
+{
+  I2C_SendStart();
+  I2C_SendByte_Ack(BMA020_WR_ADDR);
+  I2C_SendByte_Ack(0x00);
+  I2C_SendStop();
+  
+  I2C_SendStart();
+  I2C_SendByte_Ack(BMA020_RD_ADDR);
+  I2C_Receive_N_Bytes(bytes_val, 22);         
+}
+
+void checSpecifiedRegistersIntoAccelerometer(byte* values)
+{
+  byte i;
+  byte regist[22];
+  regist[0] = 0;
+  regist[1] =0;
+  
+  /*I2C_SendStart();
+  I2C_SendByte_Ack(BMA020_WR_ADDR);
+  I2C_SendByte_Ack(0x14);  
+  I2C_SendByte_Ack(0xFF);
+  I2C_SendByte_Ack(0x15);
+  I2C_SendByte_Ack(0xFF);
+  
+  I2C_SendStop();
+  
+   waitForHMC588L();
+  
+  /*
+  I2C_SendStart();
+  I2C_SendByte_Ack(BMA020_WR_ADDR);
+  I2C_SendByte_Ack(0x15);
+  I2C_SendByte_Ack(0x0F);  
+  I2C_SendStop();*/
+   
+   waitForHMC588L();   
+
+  I2C_SendStart();
+  I2C_SendByte_Ack(BMA020_WR_ADDR);
+  I2C_SendByte_Ack(0x0C);
+  I2C_SendStop();
+  
+  waitForHMC588L();
+  
+  I2C_SendStart();
+  I2C_SendByte_Ack(BMA020_RD_ADDR);
+  I2C_Receive_N_Bytes(regist, 10);
+  
+  values = regist;
+  
+  i= 0;         
+}
 
 /* END BMA020 */

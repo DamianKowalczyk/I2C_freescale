@@ -100,7 +100,7 @@ byte I2C_SendByte_No_Ack(char data)
   return OK;  
 }
 
-// this function sends stop signal before end to get information from IICD registry
+// this function sends stop signal to I2C bus before ending to get information from IICD registry
 byte I2C_ReceiveByte_No_Ack(char* data)
 {
   int delay = del;

@@ -51,7 +51,8 @@ void main(void)
   short HMC5883L_magnetic[30][3];
   short self_test_values[]= {0,0,0};
   byte accelerometer_selftest;
-  
+  short acceler_val[10][3];
+  byte accel_registry[22];
     
   
   /* Write your local variable definition here */
@@ -140,13 +141,7 @@ void main(void)
   leds_PutVal(15);  */   
    
   //HMC5883L_generateSelfTest(self_test_values); 
-  
-  /*for (j=0;j<90;j+=3)
-  {  
-    HMC5883L_getValues_SingleMeassure(&HMC5883L_magnetic[j]);
-    waitForMeassure(); 
-    waitForMeassure(); 
-  } */
+    
   /* // get values from magnetrometer
   for (j=0;j<30;j++)
   {  
@@ -157,10 +152,17 @@ void main(void)
   */
   
   //accelerometer
-  accelerometer_selftest = BMA020_init();
+  //accelerometer_selftest = BMA020_init();
+  
+  checSpecifiedRegistersIntoAccelerometer(accel_registry);
   
   
-    
+  for (j=0;j<30;j++)
+  {  
+    BMA020_getAcceleration(&acceler_val[j][0]);
+    waitForHMC588L();        
+  } 
+  leds_PutVal(15);  
   
     
   
